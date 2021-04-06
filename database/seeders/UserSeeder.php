@@ -19,6 +19,6 @@ class UserSeeder extends Seeder
             'email' => 'heraldcnp@gmail.com',
             'password' => bcrypt('123'),
         ]);
-        User::factory(99)->create();
+        User::factory(4)->create();
     }
 }
