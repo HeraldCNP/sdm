@@ -71,7 +71,13 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad laboriosam debitis cumque, odio error repellendus ipsam eos. Tenetur modi molestiae voluptatibus iusto quisquam! Quidem blanditiis quae quasi molestias placeat quos?</p>
     </div>
 </div>
-
+<div class="form-group">
+    {!! Form::label('iframe', 'Iframe') !!}
+    {!! Form::textarea('iframe', null, ['class' => 'form-control', 'rows' => '2']) !!}
+    @error('iframe')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
+</div>
 <div class="form-group">
     {!! Form::label('extract', 'Extracto') !!}
     {!! Form::textarea('extract', null, ['class' => 'form-control']) !!}

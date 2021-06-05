@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->text('extract')->nullable();
             $table->longText('body')->nullable();
+            $table->text('iframe')->nullable();
             $table->enum('status', [1,2])->default(1);
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
