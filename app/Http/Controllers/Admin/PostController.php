@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 use App\Models\Category;
+use App\Models\Image as ModelsImage;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -50,12 +53,22 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
 
+        // dd($request->file);
         $post = Post::create($request->all());
-        if($request->file('file')){
-            $url = Storage::put('posts', $request->file('file'));
-            $post->image()->create([
-                'url' => $url
-            ]);
+        if($request->file[0]){
+            foreach($request->file as $file){
+                $nombre = Str::random(8) . $file->getClientOriginalName();
+                $ruta = storage_path() . '\app\public\posts/' . $nombre;
+                Image::make($file)
+                    ->resize(800, null, function($constraint){
+                        $constraint->aspectRatio();
+                    })
+                    ->save($ruta);
+                $url = 'posts/' . $nombre;
+                $post->image()->create([
+                    'url' => $url
+                ]);
+            }
         }
         if($request->tags){
             $post->tags()->attach($request->tags);
@@ -128,6 +141,14 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $this->authorize('author', $post);
+        $images = ModelsImage::where('imageable_id', '=', $post->id)->get();
+        foreach($images as $image){
+            $ruta = storage_path().'/app/public/' . $image->url;
+            // dd($ruta);
+            // Storage::delete($ruta);
+            unlink($ruta);
+        }
+        $post->image()->delete();
         $post->delete();
         return redirect()->route('admin.posts.index')->with('info', 'El Post se elimino con exito');
     }

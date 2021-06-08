@@ -33,7 +33,7 @@ class PostRequest extends FormRequest
             'name' => 'required',
             'slug' => 'required|unique:posts',
             'status' => 'required|in:1,2',
-            'file' => 'image'
+            // 'file' => 'image'
         ];
 
         if($post){

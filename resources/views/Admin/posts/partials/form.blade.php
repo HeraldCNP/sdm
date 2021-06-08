@@ -62,12 +62,11 @@
     <div class="col-md-6">
         <div class="form-group">
             {!! Form::label('file', 'Imagen del Post') !!}
-            {!! Form::file('file', ['class' => 'form-control-file', 'accept' => 'image/*']) !!}
+            {!! Form::file('file[]', ['class' => 'form-control-file', 'accept' => 'image/*', 'multiple']) !!}
         @error('file')
             <span class="text-danger">{{ $message }}</span>
         @enderror
         </div>
-
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad laboriosam debitis cumque, odio error repellendus ipsam eos. Tenetur modi molestiae voluptatibus iusto quisquam! Quidem blanditiis quae quasi molestias placeat quos?</p>
     </div>
 </div>
