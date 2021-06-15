@@ -9,17 +9,20 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Nombre</th>
                             <th>Email</th>
-                            <th></th>
+                            <th>Nombre</th>
+                            <th>CI</th>
+                            <th>CEL</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($users as $user)
                             <tr>
                                 <td>{{ $user->id }}</td>
-                                <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
+                                <td>{{ $user->people->name }} {{ $user->people->app }} {{ $user->people->apm }}</td>
+                                <td>{{ $user->people->ci }}</td>
+                                <td>{{ $user->people->phone }}</td>
                                 <td width="10px">
                                     <a class="btn btn-primary" href="{{ route('admin.users.edit', $user) }}">Editar</a>
                                 </td>

@@ -60,9 +60,15 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    //Relacion 1 a 1
+    public function people()
+    {
+        return $this->hasOne(Person::class);
+    }
 
     //Relacion 1 a N
     public function posts(){
         return $this->hasMany(Post::class);
     }
+
 }

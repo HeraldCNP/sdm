@@ -19,6 +19,7 @@
                 {!! Form::submit('Actualizar Post', ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}
         </div>
+
     </div>
 @stop
 

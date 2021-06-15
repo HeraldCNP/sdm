@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ValidFormUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -31,7 +33,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -40,9 +42,25 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidFormUser $request)
     {
-        //
+        $user = User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['ci']),
+        ])->assignRole('Cliente');
+
+        $user->people()->create([
+            'name' => $request['name'],
+            'app' => $request['app'],
+            'apm' => $request['apm'],
+            'ci' => $request['ci'],
+            'phone' => $request['phone'],
+            'address' => $request['address'],
+        ]);
+
+
+        return redirect()->route('admin.users.index')->with('info', 'El Usuario se creó con exito');
     }
 
     /**
@@ -65,7 +83,10 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $roles = Role::all();
-        return view('admin.users.edit', compact('user', 'roles'));
+        $userRol = $user->roles->pluck('id')->toArray();
+        // dd($userRol);
+        // $role->permissions->pluck('id')
+        return view('admin.users.edit', compact('user', 'roles', 'userRol'));
     }
 
     /**
@@ -77,8 +98,26 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        // dd($request->all());
+        $user->update([
+            'name' => $request['name'],
+            'email' => $request['email']
+        ]);
+        if(isset($request->password)){
+            $user->update([
+                'password' => Hash::make($request['password']),
+            ]);
+        }
+        $user->people()->update([
+            'name' => $request['name'],
+            'app' => $request['app'],
+            'apm' => $request['apm'],
+            'ci' => $request['ci'],
+            'phone' => $request['phone'],
+            'address' => $request['address'],
+        ]);
         $user->roles()->sync($request->roles);
-        return redirect()->route('admin.users.edit', $user)->with('info', 'Se asignó los roles correctamente');
+        return redirect()->route('admin.users.edit', $user)->with('info', 'Usuario actualizado correctamente');
     }
 
     /**

@@ -240,11 +240,55 @@ return [
             'icon'        => 'fas fa-fw fa-tachometer-alt',
             'can'       =>  'admin.home'
         ],
+        // [
+        //     'text'        => 'Usuarios',
+        //     'route'         => 'admin.users.index',
+        //     'icon'        => 'fas fa-fw fa-users',
+        //     'can'       =>  'admin.users.index'
+        // ],
         [
-            'text'        => 'Usuarios',
-            'route'         => 'admin.users.index',
-            'icon'        => 'fas fa-fw fa-users',
-            'can'       =>  'admin.users.index'
+            'text'    => 'Usuarios',
+            'icon'    => 'fas fa-fw fa-users',
+            'submenu' => [
+                [
+                    'text' => 'Lista de Usuarios',
+                    'route'         => 'admin.users.index',
+                    'icon'        => 'fas fa-fw fa-eye',
+                ],
+                [
+                    'text' => 'Crear Nuevo',
+                    'route'         => 'admin.users.create',
+                    'icon'        => 'fas fa-fw fa-plus',
+                ],
+                // [
+                //     'text'    => 'level_one',
+                //     'url'     => '#',
+                //     'submenu' => [
+                //         [
+                //             'text' => 'level_two',
+                //             'url'  => '#',
+                //         ],
+                //         [
+                //             'text'    => 'level_two',
+                //             'url'     => '#',
+                //             'submenu' => [
+                //                 [
+                //                     'text' => 'level_three',
+                //                     'url'  => '#',
+                //                 ],
+                //                 [
+                //                     'text' => 'level_three',
+                //                     'url'  => '#',
+                //                 ],
+                //             ],
+                //         ],
+                //     ],
+                // ],
+                // [
+                //     'text' => 'level_one',
+                //     'url'  => '#',
+                // ],
+            ],
         ],
         [
             'text'        => 'Lista de roles',
@@ -252,6 +296,7 @@ return [
             'icon'        => 'fas fa-fw fa-users-cog',
             'can'       =>  'admin.users.index'
         ],
+        ['header' => 'Opciones de Blog'],
         [
             'text' => 'Categorias',
             'route'  => 'admin.categories.index',
@@ -266,19 +311,26 @@ return [
             'active' => ['admin/tags*'],
             'can'       =>  'admin.tags.index'
         ],
-        ['header' => 'Opciones de Blog'],
+
         [
-            'text'       => 'Lista de Post',
-            'icon' => 'far fa-fw fa-clipboard',
-            'route'        => 'admin.posts.index',
-            'can'       =>  'admin.posts.index'
+            'text'    => 'Posts',
+            'icon'    => 'far fa-fw fa-clipboard',
+            'submenu' => [
+                [
+                    'text' => 'Lista de Posts',
+                    'route'         => 'admin.posts.index',
+                    'icon'        => 'far fa-fw fa-clipboard',
+                    'can'       =>  'admin.posts.index'
+                ],
+                [
+                    'text' => 'Crear Nuevo',
+                    'route'         => 'admin.posts.create',
+                    'icon'        => 'fas fa-fw fa-plus',
+                    'can'       =>  'admin.posts.create'
+                ],
+            ],
         ],
-        [
-            'text'       => 'Crear Nuevo Post',
-            'icon' => 'far fa-fw fa-file',
-            'route'        => 'admin.posts.create',
-            'can'       =>  'admin.posts.create'
-        ],
+
     ],
 
     /*
