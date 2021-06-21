@@ -71,4 +71,9 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    //relacion 1 a N Company
+    public function companies()
+    {
+        return $this->hasMany(Company::class);
+    }
 }

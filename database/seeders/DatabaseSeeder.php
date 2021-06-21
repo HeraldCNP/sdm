@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Company;
 use App\Models\Tag;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         Category::factory(4)->create();
         Tag::factory(8)->create();
+        Company::factory(5)->create();
         $this->call(PostSeeder::class);
     }
 }

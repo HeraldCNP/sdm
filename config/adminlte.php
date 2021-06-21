@@ -311,7 +311,6 @@ return [
             'active' => ['admin/tags*'],
             'can'       =>  'admin.tags.index'
         ],
-
         [
             'text'    => 'Posts',
             'icon'    => 'far fa-fw fa-clipboard',
@@ -327,6 +326,24 @@ return [
                     'route'         => 'admin.posts.create',
                     'icon'        => 'fas fa-fw fa-plus',
                     'can'       =>  'admin.posts.create'
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Empresas',
+            'icon'    => 'far fa-fw fa-clipboard',
+            'submenu' => [
+                [
+                    'text' => 'Lista de Empresas',
+                    'route'         => 'admin.companies.index',
+                    'icon'        => 'far fa-fw fa-clipboard',
+                    // 'can'       =>  'admin.companies.index'
+                ],
+                [
+                    'text' => 'Crear Nuevo',
+                    'route'         => 'admin.companies.create',
+                    'icon'        => 'fas fa-fw fa-plus',
+                    // 'can'       =>  'admin.companies.create'
                 ],
             ],
         ],

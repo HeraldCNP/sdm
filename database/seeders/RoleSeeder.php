@@ -16,7 +16,7 @@ class RoleSeeder extends Seeder
     public function run()
     {
         $role1 = Role::create(['name' => 'Admin']);
-        $role2 = Role::create(['name' => 'Blogger']);
+        $role2 = Role::create(['name' => 'Secretaria']);
         $role3 = Role::create(['name' => 'Cliente']);
 
         Permission::create(['name' => 'admin.home', 'description' => 'Ver Dashboard'])->syncRoles([$role1, $role2]);
@@ -38,5 +38,10 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin.posts.create', 'description' => 'Crear Posts'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'admin.posts.edit', 'description' => 'Editar Posts'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'admin.posts.destroy', 'description' => 'Eliminar Posts'])->syncRoles([$role1, $role2]);
+
+        Permission::create(['name' => 'admin.companies.index', 'description' => 'Ver Listado de Empresas'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.companies.create', 'description' => 'Crear Empresa'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.companies.edit', 'description' => 'Editar Empresa'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.companies.destroy', 'description' => 'Eliminar Empresa'])->syncRoles([$role1]);
     }
 }
