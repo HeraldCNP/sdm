@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\admin\CompanyController;
+use App\Http\Controllers\admin\ElementController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RoleController;
@@ -18,3 +19,4 @@ Route::resource('categories', CategoryController::class)->except('show')->names(
 Route::resource('tags', TagController::class)->except('show')->names('admin.tags');
 Route::resource('posts', PostController::class)->except('show')->names('admin.posts');
 Route::resource('companies', CompanyController::class)->except('show')->names('admin.companies');
+Route::resource('elements', ElementController::class)->except('show')->names('admin.elements');

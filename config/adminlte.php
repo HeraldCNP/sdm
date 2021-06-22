@@ -253,7 +253,7 @@ return [
                 [
                     'text' => 'Lista de Usuarios',
                     'route'         => 'admin.users.index',
-                    'icon'        => 'fas fa-fw fa-eye',
+                    'icon'        => 'fas fa-list-ol',
                 ],
                 [
                     'text' => 'Crear Nuevo',
@@ -318,7 +318,7 @@ return [
                 [
                     'text' => 'Lista de Posts',
                     'route'         => 'admin.posts.index',
-                    'icon'        => 'far fa-fw fa-clipboard',
+                    'icon'        => 'fas fa-list-ol',
                     'can'       =>  'admin.posts.index'
                 ],
                 [
@@ -331,12 +331,12 @@ return [
         ],
         [
             'text'    => 'Empresas',
-            'icon'    => 'far fa-fw fa-clipboard',
+            'icon'    => 'far fa-fw fa-building',
             'submenu' => [
                 [
                     'text' => 'Lista de Empresas',
                     'route'         => 'admin.companies.index',
-                    'icon'        => 'far fa-fw fa-clipboard',
+                    'icon'        => 'fas fa-fw fa-list-ol',
                     // 'can'       =>  'admin.companies.index'
                 ],
                 [
@@ -344,6 +344,24 @@ return [
                     'route'         => 'admin.companies.create',
                     'icon'        => 'fas fa-fw fa-plus',
                     // 'can'       =>  'admin.companies.create'
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Elementos',
+            'icon'    => 'fas fa-fw fa-flask',
+            'submenu' => [
+                [
+                    'text' => 'Lista de Elementos',
+                    'route'         => 'admin.elements.index',
+                    'icon'        => 'fas fa-fw fa-list-ol',
+                    // 'can'       =>  'admin.elements.index'
+                ],
+                [
+                    'text' => 'Crear Nuevo',
+                    'route'         => 'admin.elements.create',
+                    'icon'        => 'fas fa-fw fa-plus',
+                    // 'can'       =>  'admin.elements.create'
                 ],
             ],
         ],

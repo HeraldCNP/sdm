@@ -96,6 +96,6 @@ class CompanyController extends Controller
     public function destroy(Company $company)
     {
         $company->delete();
-        return redirect()->route('admin.companies.index')->with('info', 'La Empresa se elimino con exito');;
+        return redirect()->route('admin.companies.index')->with('info', 'La Empresa se elimino con exito');
     }
 }

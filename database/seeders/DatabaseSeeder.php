@@ -27,5 +27,6 @@ class DatabaseSeeder extends Seeder
         Tag::factory(8)->create();
         Company::factory(5)->create();
         $this->call(PostSeeder::class);
+        $this->call(ElementSeeder::class);
     }
 }
