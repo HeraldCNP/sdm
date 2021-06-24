@@ -45,9 +45,9 @@
     </div>
     <div class="col-md-6">
         <div class="form-group">
-            {!! Form::label('delegate', 'Delegado') !!}
-            {!! Form::select('delegate', $users, null, ['class' => 'form-control']) !!}
-            @error('delegate')
+            {!! Form::label('user_id', 'Delegado') !!}
+            {!! Form::select('user_id', $users, null, ['class' => 'form-control']) !!}
+            @error('user_id')
                 <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>

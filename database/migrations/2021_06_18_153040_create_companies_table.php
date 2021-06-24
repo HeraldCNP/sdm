@@ -18,10 +18,14 @@ class CreateCompaniesTable extends Migration
             $table->string('name');
             $table->string('phone');
             $table->string('address');
-            $table->string('delegate');
             $table->string('fax')->nullable();
             $table->string('url')->nullable();
             $table->string('face')->nullable();
+            $table->foreignId('user_id')
+            ->nullable()
+            ->references('id')
+            ->on('users')
+            ->onDelete('set null');
             $table->timestamps();
         });
     }

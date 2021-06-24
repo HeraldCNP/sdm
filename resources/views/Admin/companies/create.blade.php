@@ -13,7 +13,7 @@
     <div class="card">
         <div class="card-body">
             {!! Form::open(['route' => 'admin.companies.store']) !!}
-                @include('admin.companies.partials.form')
+            @include('admin.companies.partials.form')
             <div class="row">
                 <div class="col text-center">
                     {!! Form::submit('Crear Empresa', ['class' => 'btn btn-primary']) !!}
@@ -29,5 +29,7 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script>
+        console.log('Hi!');
+    </script>
 @stop
