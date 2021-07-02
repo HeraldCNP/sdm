@@ -23,4 +23,10 @@ class Company extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    //Relacion 1 a N
+    public function packages()
+    {
+        return $this->hasMany(Package::class);
+    }
 }

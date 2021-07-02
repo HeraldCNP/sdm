@@ -296,39 +296,25 @@ return [
             'icon'        => 'fas fa-fw fa-users-cog',
             'can'       =>  'admin.users.index'
         ],
-        ['header' => 'Opciones de Blog'],
         [
-            'text' => 'Categorias',
-            'route'  => 'admin.categories.index',
-            'icon' => 'fab fa-fw fa-buffer',
-            'active' => ['admin/categories*'],
-            'can'       =>  'admin.categories.index'
-        ],
-        [
-            'text' => 'Etiquetas',
-            'route'  => 'admin.tags.index',
-            'icon' => 'far fa-fw fa-bookmark',
-            'active' => ['admin/tags*'],
-            'can'       =>  'admin.tags.index'
-        ],
-        [
-            'text'    => 'Posts',
-            'icon'    => 'far fa-fw fa-clipboard',
+            'text'    => 'Paquetes',
+            'icon'    => 'fas fa-fw fa-flask',
             'submenu' => [
                 [
-                    'text' => 'Lista de Posts',
-                    'route'         => 'admin.posts.index',
-                    'icon'        => 'fas fa-list-ol',
-                    'can'       =>  'admin.posts.index'
+                    'text' => 'Lista de Paquetes',
+                    'route'         => 'admin.packages.index',
+                    'icon'        => 'fas fa-fw fa-list-ol',
+                    // 'can'       =>  'admin.packages.index'
                 ],
                 [
                     'text' => 'Crear Nuevo',
-                    'route'         => 'admin.posts.create',
+                    'route'         => 'admin.packages.create',
                     'icon'        => 'fas fa-fw fa-plus',
-                    'can'       =>  'admin.posts.create'
+                    // 'can'       =>  'admin.packages.create'
                 ],
             ],
         ],
+
         [
             'text'    => 'Empresas',
             'icon'    => 'far fa-fw fa-building',
@@ -365,6 +351,40 @@ return [
                 ],
             ],
         ],
+        ['header' => 'Opciones de Blog'],
+        [
+            'text'    => 'Posts',
+            'icon'    => 'far fa-fw fa-clipboard',
+            'submenu' => [
+                [
+                    'text' => 'Lista de Posts',
+                    'route'         => 'admin.posts.index',
+                    'icon'        => 'fas fa-list-ol',
+                    'can'       =>  'admin.posts.index'
+                ],
+                [
+                    'text' => 'Crear Nuevo',
+                    'route'         => 'admin.posts.create',
+                    'icon'        => 'fas fa-fw fa-plus',
+                    'can'       =>  'admin.posts.create'
+                ],
+            ],
+        ],
+        [
+            'text' => 'Categorias',
+            'route'  => 'admin.categories.index',
+            'icon' => 'fab fa-fw fa-buffer',
+            'active' => ['admin/categories*'],
+            'can'       =>  'admin.categories.index'
+        ],
+        [
+            'text' => 'Etiquetas',
+            'route'  => 'admin.tags.index',
+            'icon' => 'far fa-fw fa-bookmark',
+            'active' => ['admin/tags*'],
+            'can'       =>  'admin.tags.index'
+        ],
+
 
     ],
 
@@ -424,16 +444,16 @@ return [
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
                 ],
             ],

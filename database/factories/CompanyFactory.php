@@ -25,7 +25,7 @@ class CompanyFactory extends Factory
             'name' => $this->faker->catchPhrase,
             'phone' => $this->faker->e164PhoneNumber,
             'address' => $this->faker->secondaryAddress,
-            'delegate' => 1,
+            'user_id' => 1,
         ];
     }
 }

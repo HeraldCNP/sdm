@@ -76,4 +76,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Company::class);
     }
+
+    //relacion 1 a N Paquetes
+    public function packages()
+    {
+        return $this->hasMany(Package::class);
+    }
 }

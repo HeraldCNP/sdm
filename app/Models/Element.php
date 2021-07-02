@@ -15,5 +15,9 @@ class Element extends Model
         'price',
     ];
 
-
+    //Relacion N a N
+    public function packages()
+    {
+        return $this->belongsToMany(Package::class)->withPivot('value');
+    }
 }
