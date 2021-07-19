@@ -9,6 +9,7 @@ use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use PDF;
 
 class PackageController extends Controller
 {
@@ -52,7 +53,7 @@ class PackageController extends Controller
         $package->code = $request->code;
         $package->features = $request->features;
         if($request->renown){
-            $package->renown = $request->renown;
+            $package->renown = strtoupper($request->renown);
         }
         $package->user_id = $request->user_id;
         $package->company_id = $request->company_id;
@@ -69,9 +70,9 @@ class PackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Package $package)
     {
-        //
+        return view('admin.packages.show', compact('package'));
     }
 
     /**
@@ -120,5 +121,46 @@ class PackageController extends Controller
     public function destroy(Package $package)
     {
         //
+    }
+
+
+    public function createPdf($id){
+        $package = Package::findorfail($id);
+        // $package = Package::where('key', $key)->get();
+        // dd($package);
+        // // $certificate = 'file://'.base_path().'/public/labo.crt';
+        $certificate = 'file://'.base_path().'/cert.crt';
+
+        $primaryKey =  'file://'.base_path().'/key.pem';
+
+        $info = array(
+            'Name' => 'Laboratorio Quimico Instrumental San Martin',
+            'Location' => 'Potosí - Bolivia',
+            'Reason' => 'Certificado de analisis digital',
+            'ContactInfo' => 'https://www.labsanmartin.com.bo',
+        );
+        $view = \Illuminate\Support\Facades\View::make('admin.packages.pdf', compact('package'));
+
+        $html = $view->render();
+        PDF::setSignature($certificate, $primaryKey, 'micelU76252989', '', 2, $info);
+        PDF::SetMargins(6, 7, 6, 1);
+        // PDF::SetAutoPageBreak(TRUE, 2);
+        PDF::SetTitle('Certificado de Analisis');
+        PDF::AddPage('P', 'A5');
+
+        // PDF::Cell(0, 0, 'A5 PORTRAIT', 1, 1, 'C');
+        // $style = array(
+        //     'border' => 0,
+        //     'vpadding' => 'auto',
+        //     'hpadding' => 'auto',
+        //     'fgcolor' => array(0,0,0),
+        //     'bgcolor' => false, //array(255,255,255)
+        //     'module_width' => 1, // width of a single module in points
+        //     'module_height' => 1 // height of a single module in points
+        // );
+        // PDF::write2DBarcode(url('paquete/pdf/'.$package->code), 'QRCODE,H', 155, 52, 40, 40, $style, 'L');
+        PDF::writeHTML($html, true, false, true, false, '');
+        // PDF::Text(80, 205, 'QRCODE H - COLORED');
+        PDF::Output('paquete-'.$package->key.'.pdf', 'I');
     }
 }

@@ -51,9 +51,9 @@ class UserController extends Controller
         ])->assignRole('Cliente');
 
         $user->people()->create([
-            'name' => $request['name'],
-            'app' => $request['app'],
-            'apm' => $request['apm'],
+            'name' => strtoupper($request['name']),
+            'app' => strtoupper($request['app']),
+            'apm' => strtoupper($request['apm']),
             'ci' => $request['ci'],
             'phone' => $request['phone'],
             'address' => $request['address'],

@@ -10,6 +10,7 @@ class Package extends Model
     use HasFactory;
     protected $fillable = ['key', 'code', 'features', 'renown','status', 'user_id', 'company_id'];
 
+
     //Relacion 1 a N Inversa
     public function user()
     {

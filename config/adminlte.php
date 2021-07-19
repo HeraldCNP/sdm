@@ -298,7 +298,7 @@ return [
         ],
         [
             'text'    => 'Paquetes',
-            'icon'    => 'fas fa-fw fa-flask',
+            'icon'    => 'fas fa-archive',
             'submenu' => [
                 [
                     'text' => 'Lista de Paquetes',

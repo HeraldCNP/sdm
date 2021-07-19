@@ -23,4 +23,5 @@ Route::resource('posts', PostController::class)->except('show')->names('admin.po
 Route::resource('companies', CompanyController::class)->except('show')->names('admin.companies');
 Route::resource('elements', ElementController::class)->except('show')->names('admin.elements');
 Route::resource('packages', PackageController::class)->names('admin.packages');
+Route::get('paquetes/pdf/{paquete}', [PackageController::class, 'createPdf'])->name('admin.package.pdf');
 

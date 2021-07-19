@@ -12,7 +12,9 @@ class PackagesIndex extends Component
     public function render()
     {
         $fechaHoy = Carbon::now()->isoFormat('LL');
-        $packages = Package::whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))->paginate();
+        $packages = Package::whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))
+            ->orderBy('id', 'desc')
+            ->paginate();
         $packagesT = Package::whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))->get();
         $total = 0;
         foreach($packagesT as $package){

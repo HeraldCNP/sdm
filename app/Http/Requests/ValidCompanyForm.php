@@ -27,7 +27,7 @@ class ValidCompanyForm extends FormRequest
             'name'      => 'required|min:3|max:50',
             'phone'     => 'min:7|max:12',
             'address'   => 'min:5|max:40',
-            'delegate'   => 'required',
+            // 'delegate'   => 'required',
         ];
     }
     public function messages()

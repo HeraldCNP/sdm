@@ -21,5 +21,11 @@
         $(document).ready(function() {
             $('.js-example-basic-single').select2();
         });
+
     </script>
+        <script>
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+        </script>
 @stop

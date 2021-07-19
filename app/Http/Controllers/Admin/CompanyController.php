@@ -44,6 +44,7 @@ class CompanyController extends Controller
      */
     public function store(ValidCompanyForm $request)
     {
+        // dd($request->all());
         $company = Company::create($request->all());
         return redirect()->route('admin.companies.edit', $company)->with('info', 'La Empresa se creó con exito');
     }

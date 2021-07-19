@@ -18,12 +18,12 @@
                 <thead>
                     <tr>
                         <th>N°</th>
-                        <th>Codigo</th>
+                        <th>Lote N°</th>
                         <th>Cliente</th>
                         <th>Empresa</th>
                         <th>Analisis</th>
                         {{-- <th>Estado</th> --}}
-                        <th colspan="2"></th>
+                        <th colspan="4"></th>
                     </tr>
                 </thead>
 
@@ -32,7 +32,11 @@
                         <tr>
                             <td>{{ $package->id }}</td>
                             <td>{{ $package->code }}</td>
-                            <td>{{ $package->user->people->name }} {{ $package->user->people->app }}</td>
+                            @if ($package->renown)
+                                <td>{{ $package->renown }}</td>
+                            @else
+                                <td>{{ $package->user->people->name }} {{ $package->user->people->app }}</td>
+                            @endif
                             <td>{{ $package->company->name }}</td>
                             <td>
                                 @foreach ($package->elements as $element)
@@ -41,7 +45,17 @@
                             </td>
                             <td width="10px">
                                 @can('admin.companies.edit')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.packages.edit', $package) }}">Editar</a>
+                                    <a class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Ver" href="{{ route('admin.packages.show', $package) }}"><i class="far fa-eye"></i></a>
+                                @endcan
+                            </td>
+                            <td width="10px">
+                                @can('admin.companies.edit')
+                                    <a class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Editar" href="{{ route('admin.packages.edit', $package) }}"><i class="fas fa-pencil-alt"></i></a>
+                                @endcan
+                            </td>
+                            <td width="10px">
+                                @can('admin.companies.edit')
+                                    <a class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Generar PDF" href="{{ route('admin.package.pdf', $package) }}" target="_blank"><i class="far fa-file-pdf"></i></a>
                                 @endcan
                             </td>
                             <td width="10px">
@@ -49,7 +63,7 @@
                                     <form action="{{ route('admin.packages.destroy', $package) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
+                                        <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" class="btn btn-danger btn-xs"><i class="far fa-trash-alt"></i></button>
                                     </form>
                                 @endcan
                             </td>

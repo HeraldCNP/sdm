@@ -34,7 +34,7 @@
                     </div>
                     <div class="form-group">
                         {!! Form::label('features', 'Caracteristicas') !!}
-                        {!! Form::text('features', 'Paquete Sellado', ['class' => 'form-control']) !!}
+                        {!! Form::text('features', 'PAQUETE SELLADO', ['class' => 'form-control']) !!}
                         @error('features')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
