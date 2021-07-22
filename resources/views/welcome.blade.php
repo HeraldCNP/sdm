@@ -1,155 +1,300 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <style>
-        body {
-            font-family: 'Nunito';
-            background: #f7fafc;
-        }
-    </style>
-</head>
-<body>
-    <div class="container-fluid fixed-top p-4">
-        <div class="col-12">
-            <div class="d-flex justify-content-end">
-                @if (Route::has('login'))
-                    <div class="">
-                        @auth
-                            <a href="{{ url('/dashboard') }}" class="text-muted">Dashboard</a>
-                        @else
-                            <a href="{{ route('login') }}" class="text-muted">Log in</a>
-
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="ml-4 text-muted">Register</a>
-                            @endif
-                        @endif
-                    </div>
-                @endif
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid my-5 pt-5 px-5">
-        <div class="row justify-content-center px-4">
-            <div class="col-md-12 col-lg-9">
-                <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="my-4" style="width: 271px">
-                    <g clip-path="url(#clip0)" fill="#EF3B2D">
-                        <path d="M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z"/>
-                    </g>
-                </svg>
-
-                <div class="card shadow-sm">
+@extends('layouts.layout')
+@section('content')
+<main>
+    <!--? slider Area Start-->
+    <div class="slider-area ">
+        <div class="slider-active">
+            <!-- Single Slider -->
+            <div class="single-slider slider-height d-flex align-items-center">
+                <div class="container">
                     <div class="row">
-                        <div class="col-md-6 pr-0">
-                            <div class="card-body border-right border-bottom p-3 h-100">
-                                <div class="d-flex flex-row bd-highlight pt-2">
-                                    <div>
-                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="text-muted" width="32"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                    </div>
-                                    <div class="pl-3">
-                                        <div class="mb-2">
-                                            <a href="https://laravel.com/docs" class="h5 font-weight-bolder text-dark">Documentation</a>
-                                        </div>
-                                        <p class="text-muted small">
-                                            Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
-                                        </p>
-                                    </div>
+                        <div class="col-xl-9 col-lg-9">
+                            <div class="hero__caption">
+                                <h1 >Laboratorio Quimico <span>Instrumental</span> San Martin</h1>
+                            </div>
+                            <!--Hero form -->
+                            {{-- <form action="{{ route('search.package') }}" method="POST" class="search-box" id="form" @submit="checkForm">
+                                @csrf
+                                <div class="input-form">
+                                    <input name="code" type="text" placeholder="Ingrese Código de paquete" v-model="code" required>
+                                    @if ($errors->has('code'))
+                                        <small class="form-text text-white">
+                                            {{ $errors->first('code') }}
+                                        </small>
+                                    @endif
                                 </div>
+                                <div class="search-form">
+                                    <button class="btnEnviar" type="submit">Consultar</button>
+                                </div>
+                                <span v-if="alerts.length">
+                                    <b class="text-white">Solucione los siguientes problemas:</b>
+
+                                    <ul>
+                                      <li class="text-white" v-for="alert in alerts">@{{ alert }}</li>
+                                    </ul>
+                                </span>
+                            </form> --}}
+                            <!-- Hero Pera -->
+                            <div class="hero-pera">
+                                <p>Para consultar el estado del analisis</p>
                             </div>
                         </div>
-                        <div class="col-md-6 pl-0">
-                            <div class="card-body border-bottom p-3 h-100">
-                                <div class="d-flex flex-row bd-highlight pt-2">
-                                    <div>
-                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="text-muted" width="32"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                    </div>
-                                    <div class="pl-3">
-                                        <div class="mb-2">
-                                            <a href="https://laracasts.com" class="h5 font-weight-bolder text-dark">Laracasts</a>
-                                        </div>
-                                        <p class="text-muted small">
-                                            Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 pr-0">
-                            <div class="card-body border-right p-3 h-100">
-                                <div class="d-flex flex-row bd-highlight pt-2">
-                                    <div>
-                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="text-muted" width="32"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                                    </div>
-                                    <div class="pl-3 text-sm">
-                                        <div class="mb-2">
-                                            <a href="https://laravel-news.com/" class="h5 font-weight-bolder text-dark">Laravel News</a>
-                                        </div>
-                                        <p class="text-muted small">
-                                            Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 pl-0">
-                            <div class="card-body p-3 h-100">
-                                <div class="d-flex flex-row bd-highlight pt-2">
-                                    <div>
-                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="text-muted" width="32"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                    </div>
-                                    <div class="pl-3">
-                                        <div class="mb-2">
-                                            <span class="h5 font-weight-bolder text-dark">Vibrant Ecosystem</span>
-                                        </div>
-                                        <p class="text-muted small">
-                                            Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="text-muted">Forge</a>, <a href="https://vapor.laravel.com" class="text-muted">Vapor</a>, <a href="https://nova.laravel.com" class="text-muted">Nova</a>, and <a href="https://envoyer.io" class="text-muted">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="text-muted">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="text-muted">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="text-muted">Echo</a>, <a href="https://laravel.com/docs/horizon" class="text-muted">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="text-muted">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="text-muted">Telescope</a>, and more.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="d-flex justify-content-between mt-3">
-                    <div class="text-sm text-muted">
-                        <div class="flex align-content-center">
-                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="text-muted" style="width: 18px">
-                                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                            </svg>
-
-                            <a href="https://laravel.bigcartel.com" class="text-muted">
-                                Shop
-                            </a>
-
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 text-muted" style="width: 18px">
-                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-
-                            <a href="https://github.com/sponsors/taylorotwell" class="text-muted">
-                                Sponsor
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="text-sm text-muted">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
-</html>
+    <!-- slider Area End-->
+    <!--? our info Start -->
+    <div class="our-info-area pt-70 pb-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-info mb-30">
+                        <div class="info-icon">
+                            <span class="flaticon-support"></span>
+                        </div>
+                        <div class="info-caption">
+                            <p>Llámanos en cualquier momento</p>
+                            <span>75726777 - 62 21145</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-info mb-30">
+                        <div class="info-icon">
+                            <span class="flaticon-clock"></span>
+                        </div>
+                        <div class="info-caption">
+                            <p>Domingo CERRADO</p>
+                            <span>Lunes - Sábado 08:00 - 17:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-info mb-30">
+                        <div class="info-icon">
+                            <span class="flaticon-place"></span>
+                        </div>
+                        <div class="info-caption">
+                            <p>Surco N° 519</p>
+                            <span>Potosí - Bolivia</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- our info End -->
+    <!--? Categories Area Start -->
+    <div class="categories-area section-padding20" id="servicios">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Section Tittle -->
+                    <div class="section-tittle text-center mb-80">
+                        <span>Nuestros Servicios</span>
+                        <h2>Realizamos analisis de </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-cat text-center mb-50">
+                        <div>
+                            <img src="{{ asset('img/minerals/plata.png') }}" height="100px" class="img-fluid" alt="">
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="services.html">Plata</a></h5>
+                            <p>La plata es uno de los metales preciosos más famosos, y se ha utilizado con fines ornamentales desde los primeros tiempos. La mayor parte de la plata se extrae del mineral de plata , pero se extraen cantidades considerables de Native Silver.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-cat text-center mb-50">
+                        <div>
+                            <img src="{{ asset('img/minerals/plomo.png') }}" height="100px" class="img-fluid" alt="">
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="services.html">Plomo</a></h5>
+                            <p>El plomo es un metal suave, gris y brillante con una alta densidad y un bajo punto de fusión. Aunque es peligroso para nuestra salud, los seres humanos lo han extraído y utilizado desde hace más de 6000 años.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-cat text-center mb-50">
+                        <div>
+                            <img src="{{ asset('img/minerals/zinc.png') }}" height="100px" class="img-fluid" alt="">
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="services.html">Zinc</a></h5>
+                            <p>El zinc es uno de los elementos menos comunes; se estima que forma parte de la corteza terrestre en un 0.0005-0.02%. Ocupa el lugar 25 en orden de abundancia entre los elementos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="" id="radio" data-background="{{ asset('') }}img/gallery/music.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-12">
+
+                </div>
+                <div class="col-lg-4 col-md-12 mb-5 text-center">
+                    <a href="http://tevesporteve.bolivia.bo" target="_blank">
+                        <p class="text-white text-uppercase font-weight-bold bg-dark">Tv´s X Tv - La Mejor Imagen Para Escuchar</p>
+                    </a>
+                    {{-- <audio controls autoplay preload="auto" src="http://78.129.193.82:38877/;"></audio> --}}
+                </div>
+                <div class="col-lg-4 col-md-12 ">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories Area End -->
+    <!--? About Area Start -->
+    <div class="about-low-area padding-bottom mt-5" id="somos">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-12">
+                    <!-- about-img -->
+                    <div class="about-img ">
+                        <div class="about-font-img">
+                            <img src="{{ asset('img/gallery/about2.png') }}" alt="">
+                        </div>
+                        <div class="about-back-img d-none d-lg-block">
+                            <img src="{{ asset('img/gallery/about2.png') }}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-12">
+                    <div class="about-caption mb-50">
+                        <h3 class="text-center">Cotización Diaria de Minerales</h3>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe src="http://pimm.mineria.gob.bo/PyoServicios/Estadisticas/" width=680 height=550 frameborder=0 scrolling=yes></iframe>
+                          </div>
+                        <!-- Section Tittle -->
+                        <div class="section-tittle mb-35">
+                            <span>Sobre Nosotros</span>
+                            <h3>Laboratorio Químico Instrumental San Martin</h3>
+                        </div>
+                        <p class="text-justify">Nuestro principal objetivo, es ofrecer análisis minerales confiables, rápidos y precisos, contando con una completa infraestructura en equipos, con un moderno equipo de absorción atómica, hornos de mufla, pHmetros, para la realización de los ensayos, los servicios que brinda son Análisis Cuantitativo (determinación de elementos)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About Area End -->
+    {{-- data-background="{{ asset('') }}img/gallery/section_bg02.jpg" --}}
+    <!--? Blog Area Start  "-->
+    <div class="home-blog-area section-padding30 "  id="noticias">
+        <div class="container">
+            <!-- Section Tittle -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-tittle text-center mb-70">
+                        <span>Nuestras noticias recientes</span>
+                        <h2>Blog</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach ($posts as $post)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="home-blog-single mb-30">
+                            <div class="blog-img-cap">
+                                @if($post->image)
+                                    <a href="{{ route('posts.show', $post->slug) }}">
+                                        <img class="img-fluid" src="{{ $post->image }}" alt="">
+                                    </a>
+                                @elseif($post->iframe)
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        {!! $post->iframe !!}
+                                    </div>
+                                @endif
+                                <div class="blog-img">
+
+                                </div>
+                            </div>
+                            <div class="blog-caption">
+                                <div class="blog-date text-center">
+                                    <span>{{ $post->created_at->format('d') }}</span>
+                                    <p>{{ $post->created_at->isoFormat('MMMM') }}</p>
+                                </div>
+                                <div class="blog-cap">
+                                    <ul>
+                                        <li><a href="#"><i class="ti-user"></i> {{ $post->user->people->name }}</a></li>
+                                    </ul>
+                                    <h3><a href="{{ route('posts.show', $post->slug) }}">{{ $post->name }}</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <!-- Blog Area End -->
+
+    <!--? contact-form start -->
+    <section id="contacto" class="contact-form-area section-bg  pt-115 pb-120 fix" data-background="{{ asset('') }}img/gallery/section_bg02.jpg">
+        <div class="container">
+            <div class="row justify-content-end">
+                <!-- Contact wrapper -->
+                <div class="col-xl-8 col-lg-9">
+                    <div class="contact-form-wrapper">
+                        <!-- From tittle -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <!-- Section Tittle -->
+                                <div class="section-tittle mb-50">
+                                    <span>Envianos un Mensaje</span>
+                                    <h2>¿Necesitas Información?</h2>
+                                    <p>Contacta con nosotros o déjanos un mensaje a través del formulario de contacto.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- form -->
+                        <form action="" id="form2" class="contact-form">
+                            <div class="row ">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="input-form">
+                                        <label for="nombre" >Nombre</label>
+                                        <input type="text" id="nombre" v-model="nombre" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mb-3">
+                                    <div class="input-form">
+
+                                          <label for="mensaje">Mensaje</label>
+                                          <textarea class="form-control" name="mensaje" id="mensaje" rows="3" v-model="mensaje" required></textarea>
+
+                                    </div>
+                                </div>
+                                <span v-if="alerts.length">
+                                    <b>Solucione los siguientes problemas:</b>
+
+                                    <ul>
+                                      <li v-for="alert in alerts">@{{ alert }}</li>
+                                    </ul>
+                                </span>
+                                <!-- Button -->
+                                <div class="col-lg-12">
+                                    <button name="submit" class="submit-btn" @click="checkForm2">Enviar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- contact-form end -->
+
+
+</main>
+@endsection
