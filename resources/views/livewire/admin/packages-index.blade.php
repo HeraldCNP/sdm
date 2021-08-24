@@ -71,6 +71,11 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="row mt-3">
+                <div class="col-md text-center">
+                    {{ $packages->links() }}
+                </div>
+            </div>
         </div>
     </div>
 

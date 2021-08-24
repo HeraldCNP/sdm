@@ -11,10 +11,10 @@
         <div class="alert alert-success"><strong>{{ session('info') }}</strong></div>
     @endif
     <div class="card">
-        <div class="card-body px-5 mx-5">
+        <div class="card-body">
             {!! Form::open(['route' => 'admin.packages.store']) !!}
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <div class="form-group">
                         @livewire('admin.packages-user')
                     </div>
@@ -58,7 +58,7 @@
                         {!! Form::submit('Crear Paquete', ['class' => 'btn btn-primary']) !!}
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-5">
 
                 </div>
             </div>

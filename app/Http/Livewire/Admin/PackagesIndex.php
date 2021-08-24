@@ -5,9 +5,12 @@ namespace App\Http\Livewire\Admin;
 use App\Models\Package;
 use Carbon\Carbon;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class PackagesIndex extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = "bootstrap";
 
     public function render()
     {

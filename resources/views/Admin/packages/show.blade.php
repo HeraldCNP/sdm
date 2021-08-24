@@ -3,6 +3,11 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
+    @if (session('info'))
+    <div class="alert alert-success">
+        <strong>{{ session('info') }}</strong>
+    </div>
+    @endif
     <h1>Ver Paquete</h1>
 @stop
 
@@ -14,13 +19,11 @@
             <form action="">
                 <input type="hidden" id="phone" value="{{ $package->user->people->phone }}">
                 <input type="hidden" id="key" value="{{ url('/paquete/pdf/'.$package->key) }}">
-
-                    <button class="btn btn-lg btn-success" id="btnWhatsapp" type="submit">
-                        <i class="fab fa-whatsapp"> Notificar</i>
-                    </button>
-
+                <a href="{{ route('admin.packages.index') }}" data-toggle="tooltip" title="Lista de Paquetes" class="btn btn-lg btn-info">Lista de Paquetes</a>
+                <button class="btn btn-lg btn-success" id="btnWhatsapp" type="submit" data-toggle="tooltip" title="Notificar por Whatsapp">
+                    <i class="fab fa-whatsapp"> Notificar</i>
+                </button>
                 <a href="{{ route('admin.package.pdf', $package) }}" data-toggle="tooltip" title="Generar PDF" class="btn btn-lg btn-warning" target="_blank"><i class="far fa-file-pdf"> Generar PDF </i></a>
-
             </form>
         </div>
     </div>
@@ -93,7 +96,7 @@
     document.querySelector('#btnWhatsapp').addEventListener('click', function() {
         let phone = document.querySelector('#phone').value;
         let key = document.querySelector('#key').value;
-        let url = "https://api.whatsapp.com/send?phone=591" + phone +"&text=*Laboratorio Quimico Instrumental San Martin le informa que el resultado de su analisis ya se encuentra disponible,*%0A %0A *Puede pasar a recoger o ver su certificado aqui*%0A" + key + "%0A %0A No olvide agregar este número como LabSanMartin";
+        let url = "https://api.whatsapp.com/send?phone=591" + phone +"&text=*Laboratorio Quimico Instrumental San Martin le informa que el resultado de su analisis ya se encuentra disponible,*%0A%0A %0A *Puede pasar a recoger o ver su certificado aqui*%0A" + key + "%0A %0A No olvide agregar este número como LabSanMartin";
         window.open(url);
     });
     </script>

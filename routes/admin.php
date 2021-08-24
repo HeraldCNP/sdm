@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\admin\CompanyController;
-use App\Http\Controllers\admin\ElementController;
+use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\ElementController;
 use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\admin\PackageController;
+use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\TagController;
@@ -24,4 +24,6 @@ Route::resource('companies', CompanyController::class)->except('show')->names('a
 Route::resource('elements', ElementController::class)->except('show')->names('admin.elements');
 Route::resource('packages', PackageController::class)->names('admin.packages');
 Route::get('paquetes/pdf/{paquete}', [PackageController::class, 'createPdf'])->name('admin.package.pdf');
+
+
 

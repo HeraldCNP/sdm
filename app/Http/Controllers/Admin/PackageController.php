@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ValidFormPackage;
@@ -109,7 +109,8 @@ class PackageController extends Controller
         for ($i = 0; $i < count($request->elements); $i++) {
             $package->elements()->updateExistingPivot($request->elements[$i], ['value' => $request->values[$i]]);
         }
-        return redirect()->route('admin.packages.index')->with('info', 'El Paquete se actualizó con exito');
+        // return redirect()->route('admin.packages.index')->with('info', 'El Paquete se actualizó con exito');
+        return redirect()->route('admin.packages.show', $package)->with('info', 'El paquete se editó con exito');
     }
 
     /**
