@@ -54,6 +54,7 @@
                 </tbody>
             </table>
         </div>
+        {{ $companies->links() }}
     </div>
 @stop
 

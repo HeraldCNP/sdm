@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ElementController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
@@ -24,6 +25,10 @@ Route::resource('companies', CompanyController::class)->except('show')->names('a
 Route::resource('elements', ElementController::class)->except('show')->names('admin.elements');
 Route::resource('packages', PackageController::class)->names('admin.packages');
 Route::get('paquetes/pdf/{paquete}', [PackageController::class, 'createPdf'])->name('admin.package.pdf');
+Route::get('report/date', [ReportController::class, 'searchPackageDate'])->name('admin.reports.date');
+Route::get('report/user', [ReportController::class, 'searchPackageUser'])->name('admin.reports.user');
+Route::post('reports/reportUser', [ReportController::class, 'returnReportUser'])->name('admin.reports.reportUser');
+Route::post('reports/reportDate', [ReportController::class, 'returnreportDate'])->name('admin.reports.reportDate');
 
 
 

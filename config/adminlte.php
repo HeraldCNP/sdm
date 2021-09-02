@@ -351,6 +351,24 @@ return [
                 ],
             ],
         ],
+        [
+            'text'    => 'Reportes',
+            'icon'    => 'fas fa-clipboard-list',
+            'submenu' => [
+                [
+                    'text' => 'Por Fecha',
+                    'route'         => 'admin.reports.date',
+                    'icon'        => 'far fa-calendar-alt',
+                    // 'can'       =>  'admin.elements.index'
+                ],
+                [
+                    'text' => 'Por Usuario',
+                    'route'         => 'admin.reports.user',
+                    'icon'        => 'fas fa-user',
+                    // 'can'       =>  'admin.elements.create'
+                ],
+            ],
+        ],
         ['header' => 'Opciones de Blog'],
         [
             'text'    => 'Posts',

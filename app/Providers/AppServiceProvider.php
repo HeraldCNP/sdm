@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,5 +28,8 @@ class AppServiceProvider extends ServiceProvider
         // $this->app->bind('path.public', function(){
         //     return base_path().'/../public_html';
         // });
+
+        Paginator::useBootstrap();
+
     }
 }
