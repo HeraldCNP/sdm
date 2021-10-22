@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ValidFormPackage;
 use App\Models\Company;
 use App\Models\Package;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -59,7 +60,9 @@ class PackageController extends Controller
         $package->company_id = $request->company_id;
         $package->save();
         $package->elements()->sync($request->elements);
-        // return view('admin.packages.index');
+
+
+
         return redirect()->route('admin.packages.index')->with('info', 'El Paquete se creó con exito');
         // return redirect()->route('admin.packages.edit', $company)->with('info', 'La Empresa se creó con exito');
     }
@@ -163,5 +166,49 @@ class PackageController extends Controller
         PDF::writeHTML($html, true, false, true, false, '');
         // PDF::Text(80, 205, 'QRCODE H - COLORED');
         PDF::Output('paquete-'.$package->key.'.pdf', 'I');
+    }
+
+
+    public function yesterdayReport(){
+        // $package = Package::find(1);
+        // $packages = Package::orderBy('id', 'asc')->paginate(10);
+        $fechaHoy = Carbon::yesterday()->isoFormat('LL');
+        $packages = Package::whereDate('created_at', '=', Carbon::yesterday()->format('Y-m-d'))->paginate(10);
+        $packagesT = Package::whereDate('created_at', '=', Carbon::yesterday()->format('Y-m-d'))->get();
+        $total = 0;
+        foreach($packagesT as $package){
+            $totalPaquete = 0;
+            foreach($package->elements as $element){
+                $totalPaquete += $element->price;
+            }
+            $total += $totalPaquete;
+        }
+        return view('admin.packages.ayer', compact('packages', 'fechaHoy', 'total'));
+    }
+
+    public function ticket($id){
+        $package = Package::findorfail($id);
+        $ruta = storage_path() . '\app\public\tikects/';
+        // dd($package->user->people->name);
+        // dd($package);
+        // return view('admin.packages.index');
+        PDF::SetMargins(1, 2, 3, 0);
+        $view = \Illuminate\Support\Facades\View::make('admin.packages.ticket', compact('package'));
+        $html = $view->render();
+        $medidas = array(80, 98);
+        PDF::AddPage('P', $medidas, true, 'UTF-8', true);
+        $style = array(
+            'border' => 0,
+            'vpadding' => '2',
+            'hpadding' => '2',
+            'fgcolor' => array(0,0,0),
+            'bgcolor' => false, //array(255,255,255)
+            'module_width' => 1, // width of a single module in points
+            'module_height' => 1 // height of a single module in points
+        );
+        PDF::write2DBarcode(url('paquete/pdf/'.$package->key), 'QRCODE, Q', 11, 9, 60, 60, $style, 'L');
+        PDF::writeHTML($html, true, false, true, false, '');
+        // PDF::Text(80, 205, 'QRCODE H - COLORED');
+        PDF::Output($ruta.'paquete-'.$package->key.'.pdf', 'I');
     }
 }

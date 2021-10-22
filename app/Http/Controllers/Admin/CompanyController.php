@@ -20,7 +20,7 @@ class CompanyController extends Controller
     public function index()
     {
         $companies = Company::paginate();
-        dd($companies);
+        // dd($companies);
         return view('admin.companies.index', compact('companies'));
     }
 
@@ -50,7 +50,7 @@ class CompanyController extends Controller
         return redirect()->route('admin.companies.edit', $company)->with('info', 'La Empresa se creó con exito');
     }
 
-    /**
+    /*
      * Display the specified resource.
      *
      * @param  int  $id

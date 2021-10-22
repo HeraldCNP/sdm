@@ -30,5 +30,4 @@ class PackagesIndex extends Component
 
         return view('livewire.admin.packages-index', compact('packages', 'fechaHoy', 'total'));
     }
-
 }

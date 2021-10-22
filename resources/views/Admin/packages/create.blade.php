@@ -12,6 +12,7 @@
     @endif
     <div class="card">
         <div class="card-body">
+            {{-- {!! Form::open(['route' => 'admin.packages.store', 'target' => 'print_popup', 'onsubmit' => 'window.open("about:blank","print_popup","width=1000,height=800");']) !!} --}}
             {!! Form::open(['route' => 'admin.packages.store']) !!}
             <div class="row">
                 <div class="col-md-7">
@@ -55,6 +56,7 @@
                         @enderror
                     </div>
                     <div class="text-center">
+
                         {!! Form::submit('Crear Paquete', ['class' => 'btn btn-primary']) !!}
                     </div>
                 </div>
