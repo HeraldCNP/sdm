@@ -13,17 +13,23 @@
     <table border="0">
         <tr>
             <td style="height: 20px">{{ $package->code }}</td>
-            <td style="text-align: rigth; height:22">{{ $package->id }}</td>
+            <td style="text-align: rigth; height:22">Lote: {{ $package->id }}</td>
         </tr>
         <tr>
-            <td style="height:165px" colspan="2"></td>
+            <td style="height:140px" colspan="2"></td>
         </tr>
         <tr>
             @if ($package->renown)
-                <td colspan="2" style="text-align: center; height:22; text-transform: uppercase; font-size:13px">{{ $package->renown }}</td>
+                <td colspan="2" style="text-align: center; height:10; text-transform: uppercase; font-size:13px">{{ $package->renown }}</td>
             @else
-                <td colspan="2" style="text-align: center; height:22; text-transform: uppercase; font-size:13px">{{ $package->user->people->name }} {{ $package->user->people->app }} {{ $package->user->people->apm}}</td>
+                <td colspan="2" style="text-align: center; height:10; text-transform: uppercase; font-size:13px">{{ $package->user->people->name }} {{ $package->user->people->app }} {{ $package->user->people->apm}}</td>
             @endif
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center; height:10; text-transform: uppercase; font-size:13px">{{ $package->created_at }}</td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center; height:10; text-transform: uppercase; font-size:8px">Escanee el código QR a la hora indicada para que pueda descargar su certificado digital.</td>
         </tr>
     </table>
 </body>

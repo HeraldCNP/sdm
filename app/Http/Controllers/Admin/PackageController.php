@@ -195,7 +195,7 @@ class PackageController extends Controller
         PDF::SetMargins(1, 2, 3, 0);
         $view = \Illuminate\Support\Facades\View::make('admin.packages.ticket', compact('package'));
         $html = $view->render();
-        $medidas = array(80, 98);
+        $medidas = array(80, 100);
         PDF::AddPage('P', $medidas, true, 'UTF-8', true);
         $style = array(
             'border' => 0,
@@ -206,7 +206,7 @@ class PackageController extends Controller
             'module_width' => 1, // width of a single module in points
             'module_height' => 1 // height of a single module in points
         );
-        PDF::write2DBarcode(url('paquete/pdf/'.$package->key), 'QRCODE, Q', 11, 9, 60, 60, $style, 'L');
+        PDF::write2DBarcode(url('paquete/pdf/'.$package->key), 'QRCODE, Q', 15, 10, 50, 50, $style, 'L');
         PDF::writeHTML($html, true, false, true, false, '');
         // PDF::Text(80, 205, 'QRCODE H - COLORED');
         PDF::Output($ruta.'paquete-'.$package->key.'.pdf', 'I');
