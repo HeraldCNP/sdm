@@ -15,7 +15,7 @@
 
             {!! Form::open(['route' => 'admin.users.store']) !!}
             <div class="row">
-                <div class="col-md-6">
+                {{-- <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('email', 'Correo Electronico') !!}
                         {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el Correo Electronico']) !!}
@@ -23,8 +23,8 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-                </div>
-                <div class="col-md-6">
+                </div> --}}
+                <div class="col-md-6 offset-3">
                     <div class="form-group">
                         {!! Form::label('name', 'Nombres') !!}
                         {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el nombre completo']) !!}

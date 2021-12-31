@@ -17,7 +17,7 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-group">
-                    <x-jet-label value="{{ __('Email') }}" />
+                    <x-jet-label value="{{ __('Correo Electronico') }}" />
 
                     <x-jet-input class="{{ $errors->has('email') ? 'is-invalid' : '' }}" type="email"
                                  name="email" :value="old('email')" required />
@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="form-group">
-                    <x-jet-label value="{{ __('Password') }}" />
+                    <x-jet-label value="{{ __('Contraseña') }}" />
 
                     <x-jet-input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password"
                                  name="password" required autocomplete="current-password" />
@@ -50,7 +50,7 @@
                         @endif
 
                         <x-jet-button>
-                            {{ __('Log in') }}
+                            {{ __('Iniciar Sesion') }}
                         </x-jet-button>
                     </div>
                 </div>

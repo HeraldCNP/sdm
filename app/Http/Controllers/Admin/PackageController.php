@@ -173,7 +173,7 @@ class PackageController extends Controller
         // $package = Package::find(1);
         // $packages = Package::orderBy('id', 'asc')->paginate(10);
         $fechaHoy = Carbon::yesterday()->isoFormat('LL');
-        $packages = Package::whereDate('created_at', '=', Carbon::yesterday()->format('Y-m-d'))->paginate(10);
+        $packages = Package::whereDate('created_at', '=', Carbon::yesterday()->format('Y-m-d'))->paginate();
         $packagesT = Package::whereDate('created_at', '=', Carbon::yesterday()->format('Y-m-d'))->get();
         $total = 0;
         foreach($packagesT as $package){
@@ -185,6 +185,8 @@ class PackageController extends Controller
         }
         return view('admin.packages.ayer', compact('packages', 'fechaHoy', 'total'));
     }
+
+    
 
     public function ticket($id){
         $package = Package::findorfail($id);
@@ -211,4 +213,6 @@ class PackageController extends Controller
         // PDF::Text(80, 205, 'QRCODE H - COLORED');
         PDF::Output($ruta.'paquete-'.$package->key.'.pdf', 'I');
     }
+
+    
 }

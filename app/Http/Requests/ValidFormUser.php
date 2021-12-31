@@ -24,7 +24,7 @@ class ValidFormUser extends FormRequest
     public function rules()
     {
         return [
-            'email'     => 'required|email|unique:users',
+            // 'email'     => 'required|email|unique:users',
             // 'password'  => 'required|min:3|max:16',
             'name'      => 'required|min:2|max:25',
             'app'       => 'required|min:2|max:30',

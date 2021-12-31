@@ -46,7 +46,7 @@ class UserController extends Controller
     {
         $user = User::create([
             'name' => $request['name'],
-            'email' => $request['email'],
+            'email' => $request['name'].$request['app'].$request['apm'].'@gmail.com',
             'password' => Hash::make($request['ci']),
         ])->assignRole('Cliente');
 

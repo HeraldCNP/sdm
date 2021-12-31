@@ -25,7 +25,11 @@
         <tr>
             <td colspan="2" style="text-align: center; height:38">
                 <b>Perteneciente a:</b>
-                <span>{{ $package->user->people->name }} {{ $package->user->people->app }} {{ $package->user->people->apm}}</span>
+                @if ($package->renown)
+                    <span>{{ $package->renown }}</span>
+                @else
+                    <span>{{ $package->user->people->name }} {{ $package->user->people->app }} {{ $package->user->people->apm}}</span>
+                @endif
             </td>
         </tr>
         <tr>

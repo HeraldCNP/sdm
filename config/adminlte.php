@@ -367,6 +367,12 @@ return [
                     'icon'        => 'fas fa-user',
                     // 'can'       =>  'admin.elements.create'
                 ],
+                [
+                    'text' => 'Varios',
+                    'route'         => 'admin.reports.some',
+                    'icon'        => 'far fa-list-alt',
+                    // 'can'       =>  'admin.elements.create'
+                ],
             ],
         ],
         ['header' => 'Opciones de Blog'],

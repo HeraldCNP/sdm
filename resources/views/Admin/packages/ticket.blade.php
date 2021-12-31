@@ -12,8 +12,8 @@
 <body>
     <table border="0">
         <tr>
-            <td style="height: 20px">{{ $package->code }}</td>
-            <td style="text-align: rigth; height:22">Lote: {{ $package->id }}</td>
+            <td style="height: 20px">Lote: {{ $package->code }}</td>
+            <td style="text-align: rigth; height:22">{{ $package->id }}</td>
         </tr>
         <tr>
             <td style="height:140px" colspan="2"></td>

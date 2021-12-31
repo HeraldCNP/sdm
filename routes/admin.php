@@ -29,8 +29,10 @@ Route::get('paquetes/ayer', [PackageController::class, 'yesterdayReport'])->name
 Route::get('paquetes/ticket/{paquete}', [PackageController::class, 'ticket'])->name('admin.packages.ticket');
 Route::get('report/date', [ReportController::class, 'searchPackageDate'])->name('admin.reports.date');
 Route::get('report/user', [ReportController::class, 'searchPackageUser'])->name('admin.reports.user');
+Route::get('report/some', [ReportController::class, 'somePackage'])->name('admin.reports.some');
 Route::post('reports/reportUser', [ReportController::class, 'returnReportUser'])->name('admin.reports.reportUser');
 Route::post('reports/reportDate', [ReportController::class, 'returnreportDate'])->name('admin.reports.reportDate');
+Route::post('reports/reportSome', [ReportController::class, 'reportSome'])->name('admin.reports.reportSome');
 
 
 
