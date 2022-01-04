@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ValidFormPackage;
 use App\Models\Company;
 use App\Models\Package;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -214,5 +215,12 @@ class PackageController extends Controller
         PDF::Output($ruta.'paquete-'.$package->key.'.pdf', 'I');
     }
 
-    
+    public function packagesCompany(){
+        $user = User::where('id', auth()->user()->id)->first();
+        $persona = $user->people;
+        $company = $user->companies->first();
+        $packages = Package::where('user_id', $user->id)->where('company_id', $company->id)->get();
+        // dd($packages);
+        return view('admin.packages.company', compact('packages', 'company', 'persona'));
+    }
 }

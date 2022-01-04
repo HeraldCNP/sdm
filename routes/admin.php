@@ -27,6 +27,7 @@ Route::resource('packages', PackageController::class)->names('admin.packages');
 Route::get('paquetes/pdf/{paquete}', [PackageController::class, 'createPdf'])->name('admin.package.pdf');
 Route::get('paquetes/ayer', [PackageController::class, 'yesterdayReport'])->name('admin.packages.ayer');
 Route::get('paquetes/ticket/{paquete}', [PackageController::class, 'ticket'])->name('admin.packages.ticket');
+Route::get('paquetes/cliente', [PackageController::class, 'packagesCompany'])->name('admin.packages.company');
 Route::get('report/date', [ReportController::class, 'searchPackageDate'])->name('admin.reports.date');
 Route::get('report/user', [ReportController::class, 'searchPackageUser'])->name('admin.reports.user');
 Route::get('report/some', [ReportController::class, 'somePackage'])->name('admin.reports.some');

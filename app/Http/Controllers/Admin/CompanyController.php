@@ -69,11 +69,16 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
+        // $people = DB::table('people')
+        // ->where('user_id', '=', $company->user_id)
+        // ->select(DB::raw('concat (name," ",app," ",apm) as fullname, user_id'))->get();
+        $people = User::find($company->user_id);
         $peoples = DB::table('people')
-            ->where('user_id', '=', $company->delegate)
-            ->select(DB::raw('concat (name," ",app," ",apm) as fullname, user_id'))->get();
+        ->select(DB::raw('concat (name," ",app) as fullname, user_id'))->get();
+        // dd($people);
         $users = array('' => 'Seleccione Delegado') + $peoples->pluck('fullname', 'user_id')->toArray();
-        return view('admin.companies.edit', compact('company', 'users'));
+            // dd($users);
+        return view('admin.companies.edit', compact('company', 'users', 'people'));
     }
 
     /**

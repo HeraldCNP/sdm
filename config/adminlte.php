@@ -249,6 +249,7 @@ return [
         [
             'text'    => 'Usuarios',
             'icon'    => 'fas fa-fw fa-users',
+            'can'       =>  'admin.users.index',
             'submenu' => [
                 [
                     'text' => 'Lista de Usuarios',
@@ -299,18 +300,19 @@ return [
         [
             'text'    => 'Paquetes',
             'icon'    => 'fas fa-archive',
+            'can'       =>  'admin.packages.index',
             'submenu' => [
                 [
                     'text' => 'Lista de Paquetes',
                     'route'         => 'admin.packages.index',
                     'icon'        => 'fas fa-fw fa-list-ol',
-                    // 'can'       =>  'admin.packages.index'
+                    'can'       =>  'admin.packages.index'
                 ],
                 [
                     'text' => 'Crear Nuevo',
                     'route'         => 'admin.packages.create',
                     'icon'        => 'fas fa-fw fa-plus',
-                    // 'can'       =>  'admin.packages.create'
+                    'can'       =>  'admin.packages.create'
                 ],
             ],
         ],
@@ -318,6 +320,7 @@ return [
         [
             'text'    => 'Empresas',
             'icon'    => 'far fa-fw fa-building',
+            'can'       =>  'admin.companies.index',
             'submenu' => [
                 [
                     'text' => 'Lista de Empresas',
@@ -336,6 +339,7 @@ return [
         [
             'text'    => 'Elementos',
             'icon'    => 'fas fa-fw fa-flask',
+            'can'       =>  'admin.elements.index',
             'submenu' => [
                 [
                     'text' => 'Lista de Elementos',
@@ -354,31 +358,32 @@ return [
         [
             'text'    => 'Reportes',
             'icon'    => 'fas fa-clipboard-list',
+            'can'       =>  'admin.reports.client',
             'submenu' => [
                 [
                     'text' => 'Por Fecha',
                     'route'         => 'admin.reports.date',
                     'icon'        => 'far fa-calendar-alt',
-                    // 'can'       =>  'admin.elements.index'
+                    // 'can'       =>  'admin.reports.date'
                 ],
                 [
                     'text' => 'Por Usuario',
                     'route'         => 'admin.reports.user',
                     'icon'        => 'fas fa-user',
-                    // 'can'       =>  'admin.elements.create'
+                    // 'can'       =>  'admin.reports.user'
                 ],
                 [
                     'text' => 'Varios',
                     'route'         => 'admin.reports.some',
                     'icon'        => 'far fa-list-alt',
-                    // 'can'       =>  'admin.elements.create'
+                    // 'can'       =>  'admin.reports.some'
                 ],
             ],
         ],
-        ['header' => 'Opciones de Blog'],
         [
             'text'    => 'Posts',
             'icon'    => 'far fa-fw fa-clipboard',
+            'can'       =>  'admin.posts.index',
             'submenu' => [
                 [
                     'text' => 'Lista de Posts',
@@ -409,7 +414,14 @@ return [
             'can'       =>  'admin.tags.index'
         ],
 
-
+        ['header' => 'Area Cliente',],
+        [
+            'text' => 'Mis Paquetes',
+            'route'  => 'admin.packages.company',
+            'icon' => 'far fa-fw fa-user',
+            // 'active' => ['admin/tags*'],
+            'can'       =>  'admin.packages.company'
+        ],
     ],
 
     /*

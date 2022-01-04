@@ -16,7 +16,8 @@ class Company extends Model
         'delegate',
         'fax',
         'url',
-        'face'
+        'face',
+        'user_id'
     ];
 
     //Relacion 1 a N Inversa User

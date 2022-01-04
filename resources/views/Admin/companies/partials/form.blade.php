@@ -46,7 +46,7 @@
     <div class="col-md-6">
         <div class="form-group">
             {!! Form::label('user_id', 'Delegado') !!}
-            {!! Form::select('user_id', $users, null, ['class' => 'form-control']) !!}
+            {!! Form::select('user_id', $users, $people->id, ['class' => 'form-control']) !!}
             @error('user_id')
                 <span class="text-danger">{{ $message }}</span>
             @enderror
