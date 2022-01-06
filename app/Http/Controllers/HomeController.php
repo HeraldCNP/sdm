@@ -68,7 +68,7 @@ class HomeController extends Controller
             'module_width' => 1, // width of a single module in points
             'module_height' => 1 // height of a single module in points
         );
-        PDF::write2DBarcode(url('paquete/pdf/'.$package->key), 'QRCODE,H', 152, 60, 40, 40, $style, 'L');
+        PDF::write2DBarcode(url('paquete/pdf/'.$package->key), 'QRCODE,H', 161, 55, 40, 40, $style, 'L');
         PDF::writeHTML($html, true, false, true, false, '');
         // PDF::Text(80, 205, 'QRCODE H - COLORED');
         PDF::Output('paquete-'.$package->code.'.pdf');

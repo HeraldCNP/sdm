@@ -7,8 +7,8 @@
 @stop
 
 @section('content')
-    
-    <div class="row">
+    @can('admin.packages.index')
+      <div class="row">
         <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-danger">
@@ -65,7 +65,9 @@
               <a href="{{ route('admin.elements.index') }}" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-    </div>
+    </div>  
+    @endcan
+    
     <h3>Cotización de Minerales</h3>
     <div class="embed-responsive embed-responsive-16by9">
       <iframe src="http://pimm.mineria.gob.bo/PyoServicios/Estadisticas/" width=680 height=550 frameborder=0 scrolling=yes></iframe>

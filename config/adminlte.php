@@ -358,7 +358,7 @@ return [
         [
             'text'    => 'Reportes',
             'icon'    => 'fas fa-clipboard-list',
-            'can'       =>  'admin.reports.client',
+            'can'       =>  'admin.packages.index',
             'submenu' => [
                 [
                     'text' => 'Por Fecha',
