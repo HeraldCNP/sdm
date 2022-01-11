@@ -92,14 +92,14 @@ class ReportController extends Controller
 
         $html = $view->render();
 
-        PDF::SetMargins(5, 5, 5);
+        PDF::SetMargins(2, 2, 2);
         PDF::SetAutoPageBreak(TRUE, 2);
         PDF::SetTitle('Certificado de Analisis');
-        PDF::AddPage('L', 'A5');
+        PDF::AddPage('P', 'A5');
 
         PDF::writeHTML($html, true, false, true, false, '');
         // PDF::Text(80, 205, 'QRCODE H - COLORED');
-        PDF::Output('paquetes'.'pdf');
+        PDF::Output('reporte '.$packages[0]->company->name.'-'.$packages[0]->updated_at.'.pdf');
         // return view('admin.reports.some', compact('packages'));
     }
 

@@ -96,7 +96,7 @@
     document.querySelector('#btnWhatsapp').addEventListener('click', function() {
         let phone = document.querySelector('#phone').value;
         let key = document.querySelector('#key').value;
-        let url = "https://api.whatsapp.com/send?phone=591" + phone +"&text=*Laboratorio Quimico Instrumental San Martin le informa que el resultado de su analisis ya se encuentra disponible,*%0A%0A %0A *Puede pasar a recoger o ver su certificado aqui*%0A" + key + "%0A %0A No olvide agregar este número como LabSanMartin";
+        let url = "https://api.whatsapp.com/send?phone=591" + phone +"&text=*Laboratorio Quimico Instrumental San Martin* informa que el resultado de su analisis ya se encuentra disponible, puede descargar su certificado digital aqui:%0A %0A" + key + "%0A %0A No olvide agregar este número como *LaboratorioSanMartin* para poder descargar su certificado";
         window.open(url);
     });
     </script>

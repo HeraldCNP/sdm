@@ -10,10 +10,10 @@
 <body>
     <table border="1" cellpadding="3" cellspacing="2" nobr="true">
         <tr>
-         <td colspan="6" style="text-align: center"><a href=" "><img alt="" src="{{ asset('images/pdf/banner.jpg') }}" /></a></td>
+         <td colspan="6" style="text-align: center"><a href="www.labsanmartin.com.bo"><img alt="" src="{{ asset('images/pdf/banner.jpg') }}" /></a></td>
         </tr>
         <tr>
-            <th colspan="6" align="center" style="font-size: 1.5em; font-weight: bold">CERTIFICADO DE ANALISIS</th>
+            <th colspan="6" align="center" style="font-size: 1.3em; font-weight: bold">CERTIFICADO DE ANALISIS</th>
         </tr>
         {{-- <tr>
             <td colspan="4"><h4>Potosí {{ $packages[0]->created_at->isoFormat('LL') }}</h4></td>
@@ -27,19 +27,19 @@
             {{-- <th style="text-align: center; width:50; font-size: 1.2em;">
                 <b>N°</b>
             </th> --}}
-            <th style="text-align: center; font-size: 1.2em;">
+            <th style="text-align: center; font-size: 0.9em;">
                 <b>Lote</b>
             </th>
-            <th style="text-align: center; font-size: 1.2em;">
+            <th style="text-align: center; font-size: 0.9em;">
                 <b>Cliente</b>
             </th>
-            <th style="text-align: center; font-size: 1.2em;">
+            <th style="text-align: center; font-size: 0.9em;">
                 <b>Empresa</b>
             </th>
-            <th colspan="2" style="text-align: center; font-size: 1.2em;">
+            <th colspan="2" style="text-align: center; font-size: 0.9em;">
                 <b>Analisis</b>
             </th>
-            <th style="text-align: center; font-size: 1.2em;">
+            <th style="text-align: center; font-size: 0.9em;">
                 <b>Fecha</b>
             </th>
             
@@ -47,15 +47,15 @@
         @foreach ($packages as $package)
         <tr>
         
-            {{-- <td style="text-align: center">{{ $package->id }}</td> --}}
-            <td style="text-align: center">{{ $package->code }}</td>
+            {{-- <td style="text-align: center; font-size: 0.8em;">{{ $package->id }}</td> --}}
+            <td style="text-align: center; font-size: 0.8em;">{{ $package->code }}</td>
             @if ($package->renown)
-                <td style="text-align: center; font-size: 0.8em;">{{ $package->renown }}</td>
+                <td style="text-align: center; font-size: 0.7em;">{{ $package->renown }}</td>
             @else
-                <td style="text-align: center; font-size: 0.8em;">{{ $package->user->people->name }} {{ $package->user->people->app }}</td>
+                <td style="text-align: center; font-size: 0.7em;">{{ $package->user->people->name }} {{ $package->user->people->app }}</td>
             @endif
-            <td style="text-align: center; font-size: 0.8em;">{{ $package->company->name }}</td>
-            <td colspan="2" style="text-align: center;">
+            <td style="text-align: center; font-size: 0.7em;">{{ $package->company->name }}</td>
+            <td colspan="2" style="text-align: center; font-size: 0.8em;">
                 @foreach ($package->elements as $element)
                     @if ($element == $package->elements->last())
                         <b>{{  $element->name . ' ' }}</b> = {{ $element->pivot->value }} {{ $element->symbol }}
@@ -70,7 +70,8 @@
         </tr>
         @endforeach
         <tr>
-            <td colspan="6" style="text-align: center; font-size:9px">"ESTE ES UN <b color="#FF0000">DOCUMENTO FIRMADO DIGITALMENTE"</b> <br>LA ALTERACI&Oacute;N, FALSIFICACI&Oacute;N O COMERCIALIZACI&Oacute;N ILEGAL DE ESTE DOCUMENTO ESTA PENADO POR LA LEY"</td>
+            <td colspan="5" style="text-align: center; font-size:0.5em; border-style: none;">Este certificado se encuentra firmado digitalmente por el <a href="www.labsanmartin.com.bo" target="_blank">Laboratorio Quimico Instrumental San Martin</a> y puede ser verificado en la página <a href="https://validar.firmadigital.bo/" target="_blank">https://validar.firmadigital.bo/</a><br>Recuerda que la Firma Digital es legalmente válida según la Ley 164 de 2011 y el Decreto Supremo 3525 de 2018 </td>
+            <td style="border-style: none;"><a style="text-align: center;" href="www.firmadigital.bo" target="_blank"><img height="25px" alt="" src="{{ asset('images/pdf/logoFirmaDigital.jpg') }}" /></a>  </td>
         </tr>
        </table>
 </body>
