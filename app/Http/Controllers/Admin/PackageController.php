@@ -219,8 +219,12 @@ class PackageController extends Controller
         $user = User::where('id', auth()->user()->id)->first();
         $persona = $user->people;
         $company = $user->companies->first();
-        $packages = Package::where('user_id', $user->id)->where('company_id', $company->id)->get();
+        $packages = Package::where('user_id', $user->id)
+                    ->where('company_id', $company->id)
+                    ->orderBy("created_at", "desc")
+                    ->paginate(15);
+        $n = 1;
         // dd($packages);
-        return view('admin.packages.company', compact('packages', 'company', 'persona'));
+        return view('admin.packages.company', compact('packages', 'company', 'persona', 'n'));
     }
 }

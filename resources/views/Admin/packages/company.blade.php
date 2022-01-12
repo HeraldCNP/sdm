@@ -21,10 +21,11 @@
                 <thead>
                     <tr>
                         <th>N°</th>
-                        <th>Lote N°</th>
+                        <th>Lote</th>
                         <th>Cliente</th>
                         <th>Empresa</th>
                         <th>Analisis</th>
+                        <th>Fecha</th>
                         {{-- <th>Estado</th> --}}
                         <th colspan="5"></th>
                     </tr>
@@ -33,7 +34,7 @@
                 <tbody>
                     @foreach ($packages as $package)
                         <tr>
-                            <td>{{ $package->id }}</td>
+                            <td>{{ $n++ }}</td>
                             <td>{{ $package->code }}</td>
                             @if ($package->renown)
                                 <td>{{ $package->renown }}</td>
@@ -46,6 +47,7 @@
                                     <b>{{  $element->name . ' ' }}</b> = {{ $element->pivot->value }} {{ $element->symbol }}
                                 @endforeach
                             </td>
+                            <td>{{ $package->created_at->isoFormat('LL') }}</td>
                             <td width="10px">
                                 @can('admin.companies.edit')
                                     <a class="btn btn-xs btn-secondary" target="_blank" data-toggle="tooltip" data-placement="top" title="Imprimir Ticket" href="{{ route('admin.packages.ticket', $package) }}"><i class="fas fa-ticket-alt"></i></a>
@@ -82,7 +84,7 @@
             </table>
             <div class="row mt-3">
                 <div class="col-md text-center">
-                    {{-- {{ $packages->links() }} --}}
+                    {{ $packages->links() }}
                 </div>
             </div>
         </div>
