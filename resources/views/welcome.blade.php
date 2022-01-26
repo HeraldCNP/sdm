@@ -35,9 +35,9 @@
                                 </span>
                             </form> --}}
                             <!-- Hero Pera -->
-                            <div class="hero-pera">
+                            {{-- <div class="hero-pera">
                                 <p>Para consultar el estado del analisis</p>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -146,7 +146,7 @@
                     <a href="http://tevesporteve.bolivia.bo" target="_blank">
                         <p class="text-white text-uppercase font-weight-bold bg-dark">Tv´s X Tv - La Mejor Imagen Para Escuchar</p>
                     </a>
-                    {{-- <audio controls autoplay preload="auto" src="http://78.129.193.82:38877/;"></audio> --}}
+                    <audio controls autoplay preload="auto" src="http://78.129.193.82:38877/;"></audio>
                 </div>
                 <div class="col-lg-4 col-md-12 ">
 
