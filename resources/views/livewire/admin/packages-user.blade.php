@@ -14,7 +14,7 @@
         </div>
     @else
         @if ($people)
-            <p class="alert alert-danger mt-1">No hay registros, vuelva a ingresar el Apellido o Carnet de Identidad</p>
+            <p class="alert alert-danger m-2">No hay registros, vuelva a ingresar el Apellido o Carnet de Identidad</p>
         @endif
     @endif
 </div>

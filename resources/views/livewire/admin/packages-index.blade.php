@@ -10,7 +10,7 @@
         </div>
         <div class="card-header d-flex">
             <a href="{{ route('admin.packages.ayer') }}" class="btn btn-danger">Reporte Ayer</a>
-            <x-jet-input class="mx-4" style="flex: 1"></x-jet-input>
+            <x-jet-input class="mx-4" style="flex: 1" wire:model="search" placeholder="Ingrese el Codigo de Paquete"></x-jet-input>
             <a href="{{ route('admin.packages.create') }}" class="btn btn-danger">Crear Nuevo</a>
         </div>
         <div class="card-body">

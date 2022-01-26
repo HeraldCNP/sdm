@@ -14,6 +14,7 @@ class PackagesUser extends Component
     {
         if(!empty($this->client)){
             $this->people = Person::where('app', 'LIKE', '%'.$this->client.'%')
+            // ->orWhere('name', 'LIKE', '%'.$this->client.'%')
             ->orWhere('ci', $this->client)
             ->get();
         }

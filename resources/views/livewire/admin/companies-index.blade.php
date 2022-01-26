@@ -1,22 +1,13 @@
-@extends('adminlte::page')
-
-@section('title', 'Dashboard')
-
-@section('content_header')
-    @can('admin.companies.create')
-        <a href="{{ route('admin.companies.create') }}" class="btn btn-secondary btn-sm float-right">Agregar Empresa</a>
-    @endcan
-    <h1>Lista de Empresas</h1>
-@stop
-
-@section('content')
-    @livewire('admin.companies-index')
-    {{-- @if (session('info'))
+<div>
+    @if (session('info'))
         <div class="alert alert-success">
             <strong>{{ session('info') }}</strong>
         </div>
     @endif
     <div class="card">
+        <div class="card-header">
+            <input wire:model="search" type="text" class="form-control" placeholder="Ingrese el nombre de la empresa">
+        </div>
         <div class="card-body">
             <table class="table table-stripe">
                 <thead>
@@ -56,13 +47,5 @@
             </table>
         </div>
         {{ $companies->links() }}
-    </div> --}}
-@stop
-
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
-
-@section('js')
-    <script> console.log('Hi!'); </script>
-@stop
+    </div>
+</div>

@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\Person;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Livewire\WithPagination;
 
 use Livewire\Component;
@@ -18,12 +19,11 @@ class UsersIndex extends Component
     }
     public function render()
     {
-        // $users = User::where('name', 'LIKE', '%'.$this->search.'%')
-        // ->orWhere('app', 'LIKE', '%'.$this->search.'%')
-        // ->paginate();
-        $users = User::with('people')
-        ->where('email', 'LIKE', '%'.$this->search.'%')
-        ->paginate(20);
+        $usersQuery = User::query()->whereHas('people', function(Builder $query){
+            $query->where('name', 'LIKE', '%'.$this->search.'%')
+                ->orWhere('app', 'LIKE', '%'.$this->search.'%');
+        });
+        $users = $usersQuery->paginate(15);
         return view('livewire.admin.users-index', compact('users'));
     }
 }
