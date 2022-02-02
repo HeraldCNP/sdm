@@ -64,6 +64,7 @@
                                     <a class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Generar PDF" href="{{ route('admin.package.pdf', $package) }}" target="_blank"><i class="far fa-file-pdf"></i></a>
                                 @endcan
                             </td>
+                            
                             <td width="10px">
                                 @can('admin.companies.destroy')
                                     <form action="{{ route('admin.packages.destroy', $package) }}" method="POST">
@@ -71,6 +72,11 @@
                                         @method('DELETE')
                                         <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" class="btn btn-danger btn-xs"><i class="far fa-trash-alt"></i></button>
                                     </form>
+                                @endcan
+                            </td>
+                            <td width="10px">
+                                @can('admin.companies.edit')
+                                    <a class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Generar PDF peque" href="{{ route('admin.package.certPdf', $package) }}" target="_blank"><i class="far fa-file-pdf"></i></a>
                                 @endcan
                             </td>
                         </tr>

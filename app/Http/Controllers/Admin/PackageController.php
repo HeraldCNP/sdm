@@ -190,7 +190,7 @@ class PackageController extends Controller
 
     public function ticket($id){
         $package = Package::findorfail($id);
-        $ruta = storage_path() . '\app\public\tikects/';
+        // $ruta = storage_path() . '\app\public\tikects/';
         // dd($package->user->people->name);
         // dd($package);
         // return view('admin.packages.index');
@@ -211,7 +211,34 @@ class PackageController extends Controller
         PDF::write2DBarcode(url('paquete/pdf/'.$package->key), 'QRCODE, Q', 15, 10, 50, 50, $style, 'L');
         PDF::writeHTML($html, true, false, true, false, '');
         // PDF::Text(80, 205, 'QRCODE H - COLORED');
-        PDF::Output($ruta.'paquete-'.$package->key.'.pdf', 'I');
+        PDF::Output('paquete-'.$package->key.'.pdf', 'I');
+    }
+
+
+    public function certPdf($id){
+        $package = Package::findorfail($id);
+        // $ruta = storage_path() . '\app\public\tikects/';
+        // dd($package->user->people->name);
+        // dd($package);
+        // return view('admin.packages.index');
+        PDF::SetMargins(1, 2, 3, 0);
+        $view = \Illuminate\Support\Facades\View::make('admin.packages.cert', compact('package'));
+        $html = $view->render();
+        $medidas = array(80, 300);
+        PDF::AddPage('P', $medidas, true, 'UTF-8', true);
+        $style = array(
+            'border' => 0,
+            'vpadding' => '2',
+            'hpadding' => '2',
+            'fgcolor' => array(0,0,0),
+            'bgcolor' => false, //array(255,255,255)
+            'module_width' => 1, // width of a single module in points
+            'module_height' => 1 // height of a single module in points
+        );
+        PDF::write2DBarcode(url('paquete/pdf/'.$package->key), 'QRCODE, Q', 22, 20, 35, 35, $style, 'L');
+        PDF::writeHTML($html, true, false, true, false, '');
+        // PDF::Text(80, 205, 'QRCODE H - COLORED');
+        PDF::Output('paquete-'.$package->key.'.pdf', 'I');
     }
 
     public function packagesCompany(){

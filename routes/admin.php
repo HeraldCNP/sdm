@@ -25,6 +25,7 @@ Route::resource('companies', CompanyController::class)->except('show')->names('a
 Route::resource('elements', ElementController::class)->except('show')->names('admin.elements');
 Route::resource('packages', PackageController::class)->names('admin.packages');
 Route::get('paquetes/pdf/{paquete}', [PackageController::class, 'createPdf'])->name('admin.package.pdf');
+Route::get('paquetes/pdfcert/{paquete}', [PackageController::class, 'certPdf'])->name('admin.package.certPdf');
 Route::get('paquetes/ayer', [PackageController::class, 'yesterdayReport'])->name('admin.packages.ayer');
 Route::get('paquetes/ticket/{paquete}', [PackageController::class, 'ticket'])->name('admin.packages.ticket');
 Route::get('paquetes/cliente', [PackageController::class, 'packagesCompany'])->name('admin.packages.company');
