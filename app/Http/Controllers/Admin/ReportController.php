@@ -21,6 +21,10 @@ class ReportController extends Controller
         return view('admin.reports.searchUser');
     }
 
+    public function searchReportDay(){
+        return view('admin.reports.searchDay');
+    }
+
 
     public function returnReportUser(Request $request){
 
@@ -56,8 +60,27 @@ class ReportController extends Controller
         return view('admin.reports.date', compact('packages', 'total', 'from', 'to'));
     }
 
+
+    public function reportDay(Request $request){
+        $day = Carbon::create($request->day);
+        $packages = Package::whereDate('created_at', $day)->get();
+
+        $view = \Illuminate\Support\Facades\View::make('admin.packages.somePdf', compact('packages'));
+
+        $html = $view->render();
+
+        PDF::SetMargins(2, 2, 2);
+        PDF::SetAutoPageBreak(TRUE, 2);
+        PDF::SetTitle('Certificado de Analisis');
+        PDF::AddPage('P', 'A5');
+
+        PDF::writeHTML($html, true, false, true, false, '');
+        PDF::Output('reporte '.$packages[0]->created_at.'.pdf');
+    }
+
     public function somePackage(){
         return view('admin.reports.somePackage');
+        
     }
 
     public function reportSome(Request $request){
@@ -112,9 +135,9 @@ class ReportController extends Controller
         // $package = $packa[0];
 
         // // $certificate = 'file://'.base_path().'/public/labo.crt';
-        // $certificate = 'file://'.base_path().'/cert.crt';
+        $certificate = 'file://'.base_path().'/cert.crt';
 
-        // $primaryKey =  'file://'.base_path().'/key.pem';
+        $primaryKey =  'file://'.base_path().'/key.pem';
 
         $info = array(
             'Name' => 'Laboratorio Quimico Instrumental San Martin',
@@ -146,4 +169,7 @@ class ReportController extends Controller
         // PDF::Text(80, 205, 'QRCODE H - COLORED');
         PDF::Output('paquete-'.$package->code.'.pdf');
     }
+
+
+    
 }

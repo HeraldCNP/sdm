@@ -378,6 +378,12 @@ return [
                     'icon'        => 'far fa-list-alt',
                     // 'can'       =>  'admin.reports.some'
                 ],
+                [
+                    'text' => 'Diario',
+                    'route'         => 'admin.reports.day',
+                    'icon'        => 'far fa-calendar-alt',
+                    // 'can'       =>  'admin.reports.some'
+                ],
             ],
         ],
         [

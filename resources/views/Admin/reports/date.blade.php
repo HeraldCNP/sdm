@@ -69,6 +69,11 @@
                                     </form>
                                 @endcan
                             </td>
+                            <td width="10px">
+                                @can('admin.companies.edit')
+                                    <a class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Generar PDF peque" href="{{ route('admin.package.certPdf', $package) }}" target="_blank"><i class="far fa-file-pdf"></i></a>
+                                @endcan
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

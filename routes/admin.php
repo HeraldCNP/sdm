@@ -31,10 +31,12 @@ Route::get('paquetes/ticket/{paquete}', [PackageController::class, 'ticket'])->n
 Route::get('paquetes/cliente', [PackageController::class, 'packagesCompany'])->name('admin.packages.company');
 Route::get('report/date', [ReportController::class, 'searchPackageDate'])->name('admin.reports.date');
 Route::get('report/user', [ReportController::class, 'searchPackageUser'])->name('admin.reports.user');
+Route::get('report/day', [ReportController::class, 'searchReportDay'])->name('admin.reports.day');
 Route::get('report/some', [ReportController::class, 'somePackage'])->name('admin.reports.some');
 Route::post('reports/reportUser', [ReportController::class, 'returnReportUser'])->name('admin.reports.reportUser');
 Route::post('reports/reportDate', [ReportController::class, 'returnreportDate'])->name('admin.reports.reportDate');
 Route::post('reports/reportSome', [ReportController::class, 'reportSome'])->name('admin.reports.reportSome');
+Route::post('reports/reportDay', [ReportController::class, 'reportDay'])->name('admin.reports.reportDay');
 
 
 
