@@ -65,7 +65,7 @@ class ReportController extends Controller
         $day = Carbon::create($request->day);
         $packages = Package::whereDate('created_at', $day)->get();
 
-        $view = \Illuminate\Support\Facades\View::make('admin.packages.somePdf', compact('packages'));
+        $view = \Illuminate\Support\Facades\View::make('admin.packages.dayPdf', compact('packages'));
 
         $html = $view->render();
 
