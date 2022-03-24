@@ -17,8 +17,9 @@ class PackagesUser extends Component
             // ->orWhere('name', 'LIKE', '%'.$this->client.'%')
             ->orWhere('ci', $this->client)
             ->get();
+            // dd($this->people);
         }
-        return view('livewire.admin.packages-user', compact($this->people));
+        return view('livewire.admin.packages-user')->with('people', $this->people);
     }
 }
 
