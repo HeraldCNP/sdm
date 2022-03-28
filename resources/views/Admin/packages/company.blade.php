@@ -11,11 +11,11 @@
         <div class="text-center">
             <h4>Reporte de la Empresa: <b> {{ $company->name }}</b></h4>
         </div>
-        <div class="card-header d-flex">
+        {{-- <div class="card-header d-flex">
             <a href="{{ route('admin.packages.ayer') }}" class="btn btn-danger">Reporte Ayer</a>
             <x-jet-input class="mx-4" style="flex: 1"></x-jet-input>
             <a href="{{ route('admin.packages.create') }}" class="btn btn-danger">Crear Nuevo</a>
-        </div>
+        </div> --}}
         <div class="card-body">
             <table class="table table-striped table-responsive">
                 <thead>
@@ -27,7 +27,7 @@
                         <th>Analisis</th>
                         <th>Fecha</th>
                         {{-- <th>Estado</th> --}}
-                        <th colspan="5"></th>
+                        <th colspan="5">Acciones</th>
                     </tr>
                 </thead>
 
@@ -65,7 +65,7 @@
                                 @endcan
                             </td>
                             <td width="10px">
-                                @can('admin.companies.edit')
+                                @can('admin.packages.company')
                                     <a class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Generar PDF" href="{{ route('admin.package.pdf', $package) }}" target="_blank"><i class="far fa-file-pdf"></i></a>
                                 @endcan
                             </td>

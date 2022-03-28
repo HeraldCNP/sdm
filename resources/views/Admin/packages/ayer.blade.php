@@ -52,7 +52,7 @@
                                     {{ $element->symbol }}
                                 @endforeach
                             </td>
-                            <td width="10px">
+                            {{-- <td width="10px">
                                 @can('admin.companies.edit')
                                     <a class="btn btn-xs btn-secondary" target="_blank" data-toggle="tooltip"
                                         data-placement="top" title="Imprimir Ticket"
@@ -60,14 +60,14 @@
                                             class="fas fa-ticket-alt"></i></a>
 
                                 @endcan
-                            </td>
-                            <td width="10px">
+                            </td> --}}
+                            {{-- <td width="10px">
                                 @can('admin.companies.edit')
                                     <a class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Ver"
                                         href="{{ route('admin.packages.show', $package) }}"><i
                                             class="far fa-eye"></i></a>
                                 @endcan
-                            </td>
+                            </td> --}}
                             <td width="10px">
                                 @can('admin.companies.edit')
                                     <a class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Editar"
@@ -92,11 +92,11 @@
                                     </form>
                                 @endcan
                             </td>
-                            <td width="10px">
+                            {{-- <td width="10px">
                                 @can('admin.companies.edit')
                                     <a class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Generar PDF peque" href="{{ route('admin.package.certPdf', $package) }}" target="_blank"><i class="far fa-file-pdf"></i></a>
                                 @endcan
-                            </td>
+                            </td> --}}
                         </tr>
                     @endforeach
                 </tbody>

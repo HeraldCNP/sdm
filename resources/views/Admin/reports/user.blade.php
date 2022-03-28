@@ -46,11 +46,11 @@
                                 @endforeach
                             </td>
                             <td>{{ $package->updated_at->isoFormat('L') }}</td>
-                            <td width="10px">
+                            {{-- <td width="10px">
                                 @can('admin.companies.edit')
                                     <a class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Ver" href="{{ route('admin.packages.show', $package) }}"><i class="far fa-eye"></i></a>
                                 @endcan
-                            </td>
+                            </td> --}}
                             <td width="10px">
                                 @can('admin.companies.edit')
                                     <a class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Editar" href="{{ route('admin.packages.edit', $package) }}"><i class="fas fa-pencil-alt"></i></a>

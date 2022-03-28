@@ -131,23 +131,16 @@ class PackageController extends Controller
 
     public function createPdf($id){
         $package = Package::findorfail($id);
-        // $package = Package::where('key', $key)->get();
-        // dd($package);
-        // // $certificate = 'file://'.base_path().'/public/labo.crt';
-        $certificate = 'file://'.base_path().'/cert.crt';
-
-        $primaryKey =  'file://'.base_path().'/key.pem';
 
         $info = array(
-            'Name' => 'Laboratorio Quimico Instrumental San Martin',
+            'Name' => 'Laboratorio Quimico SDM',
             'Location' => 'Potosí - Bolivia',
-            'Reason' => 'Certificado de analisis digital',
-            'ContactInfo' => 'https://www.labsanmartin.com.bo',
+            'Reason' => 'Certificado de analisis',
+            'ContactInfo' => 'http://www.labsdm.net',
         );
-        $view = \Illuminate\Support\Facades\View::make('admin.packages.pdf2', compact('package'));
+        $view = \Illuminate\Support\Facades\View::make('admin.packages.pdf', compact('package'));
 
         $html = $view->render();
-        PDF::setSignature($certificate, $primaryKey, 'micelU76252989', '', 2, $info);
         PDF::SetMargins(6, 7, 6, 1);
         // PDF::SetAutoPageBreak(TRUE, 2);
         PDF::SetTitle('Certificado de Analisis');
@@ -247,7 +240,7 @@ class PackageController extends Controller
         $company = $user->companies->first();
         $packages = Package::where('user_id', $user->id)
                     ->where('company_id', $company->id)
-                    ->orderBy("created_at", "desc")
+                    ->orderBy("created_at", "asc")
                     ->paginate(15);
         $n = 1;
         // dd($packages);

@@ -16,7 +16,7 @@ return [
 
     'title' => '',
     'title_prefix' => '',
-    'title_postfix' => '| San Martin',
+    'title_postfix' => '| SDM',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>Lab</b> San Martin',
+    'logo' => '<b>Lab</b> SDM',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Laboratorio Quimico Instrumental San Martin',
+    'logo_img_alt' => 'Laboratorio Quimico SDM',
 
     /*
     |--------------------------------------------------------------------------
@@ -126,9 +126,9 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-danger elevation-4',
+    'classes_sidebar' => 'sidebar-light-danger elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-dark navbar-light',
+    'classes_topnav' => 'navbar-light navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -386,39 +386,39 @@ return [
                 ],
             ],
         ],
-        [
-            'text'    => 'Posts',
-            'icon'    => 'far fa-fw fa-clipboard',
-            'can'       =>  'admin.posts.index',
-            'submenu' => [
-                [
-                    'text' => 'Lista de Posts',
-                    'route'         => 'admin.posts.index',
-                    'icon'        => 'fas fa-list-ol',
-                    'can'       =>  'admin.posts.index'
-                ],
-                [
-                    'text' => 'Crear Nuevo',
-                    'route'         => 'admin.posts.create',
-                    'icon'        => 'fas fa-fw fa-plus',
-                    'can'       =>  'admin.posts.create'
-                ],
-            ],
-        ],
-        [
-            'text' => 'Categorias',
-            'route'  => 'admin.categories.index',
-            'icon' => 'fab fa-fw fa-buffer',
-            'active' => ['admin/categories*'],
-            'can'       =>  'admin.categories.index'
-        ],
-        [
-            'text' => 'Etiquetas',
-            'route'  => 'admin.tags.index',
-            'icon' => 'far fa-fw fa-bookmark',
-            'active' => ['admin/tags*'],
-            'can'       =>  'admin.tags.index'
-        ],
+        // [
+        //     'text'    => 'Posts',
+        //     'icon'    => 'far fa-fw fa-clipboard',
+        //     'can'       =>  'admin.posts.index',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'Lista de Posts',
+        //             'route'         => 'admin.posts.index',
+        //             'icon'        => 'fas fa-list-ol',
+        //             'can'       =>  'admin.posts.index'
+        //         ],
+        //         [
+        //             'text' => 'Crear Nuevo',
+        //             'route'         => 'admin.posts.create',
+        //             'icon'        => 'fas fa-fw fa-plus',
+        //             'can'       =>  'admin.posts.create'
+        //         ],
+        //     ],
+        // ],
+        // [
+        //     'text' => 'Categorias',
+        //     'route'  => 'admin.categories.index',
+        //     'icon' => 'fab fa-fw fa-buffer',
+        //     'active' => ['admin/categories*'],
+        //     'can'       =>  'admin.categories.index'
+        // ],
+        // [
+        //     'text' => 'Etiquetas',
+        //     'route'  => 'admin.tags.index',
+        //     'icon' => 'far fa-fw fa-bookmark',
+        //     'active' => ['admin/tags*'],
+        //     'can'       =>  'admin.tags.index'
+        // ],
 
         ['header' => 'Area Cliente',],
         [
