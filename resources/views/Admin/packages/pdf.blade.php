@@ -12,39 +12,33 @@
 <body>
     <table border="0">
         <tr>
-            <td style="height:90px" colspan="4"></td>
+            <td style="height:125px" colspan="4"></td>
         </tr>
         <tr>
-            <td colspan="2"></td>
             <td></td>
-            <td style="text-align: center; height:22">{{ $package->id }}</td>
+            <td colspan="2" style="text-align: left; height:16">{{ $package->fecha }}</td>
+            <td></td>
         </tr>
         <tr>
-            <td colspan="2"></td>
-            <td colspan="2" style="height:22; text-transform: uppercase;">
-                @foreach ($package->elements as $element)
-                    {{ $element->name . ' ' }}
-                @endforeach
-            </td>
+            <td></td>
+            <td colspan="2" style="text-align: left; height:16">{{ $package->company->name }}</td>
         </tr>
         <tr>
+            <td></td>
             @if ($package->renown)
-                <td colspan="4" style="text-align: center; height:25; text-transform: uppercase;">{{ $package->renown }}</td>
+                <td colspan="2" style="text-align: left; height:16; text-transform: uppercase;">{{ $package->renown }}</td>
 
             @else
-                <td colspan="4" style="text-align: center; height:22; text-transform: uppercase;">{{ $package->user->people->name }} {{ $package->user->people->app }} {{ $package->user->people->apm}}</td>
+                <td colspan="2" style="text-align: left; height:16; text-transform: uppercase;">{{ $package->user->people->name }} {{ $package->user->people->app }} {{ $package->user->people->apm}}</td>
             @endif
         </tr>
         <tr>
             <td></td>
-            <td style="text-align: center; height:22">{{ $package->code }}</td>
-            <td></td>
-            <td></td>
+            <td colspan="2" style="text-align: left; height:16">{{ $package->code }}</td>
         </tr>
         <tr>
-
-            <td colspan="2" style="height:22; text-align: rigth">  {{ $package->features }}</td>
-            <td colspan="2" style="text-align: center">{{ $package->company->name }}</td>
+            <td></td>
+            <td colspan="2" style="height:16; text-align: left">{{ $package->features }}</td>
         </tr>
         <tr><td colspan="4" height="105px"></td></tr>
         @foreach ($package->elements as $element)

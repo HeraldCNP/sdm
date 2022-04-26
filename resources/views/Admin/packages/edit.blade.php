@@ -62,6 +62,15 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        {!! Form::label('fecha', 'Fecha') !!}
+                        <div id="date">
+                            <div class="input-daterange input-group" id="datepicker">
+                                <input type="text" class="input-sm form-control" name="fecha" value="{{ $package->fecha }}" />
+                            </div>
+                        </div>
+                    </div>
+                   
                     <div class="text-center">
                         {!! Form::submit('Editar Paquete', ['class' => 'btn btn-primary']) !!}
                     </div>
@@ -78,6 +87,7 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
 @stop
 
 @section('js')
@@ -85,5 +95,11 @@
         $(document).ready(function() {
             $('.elements').select2();
         });
+    </script>
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+    <script>
+        // In your Javascript (external .js resource or <script> tag)
+            $('#date .input-daterange').datepicker({
+});
     </script>
 @stop

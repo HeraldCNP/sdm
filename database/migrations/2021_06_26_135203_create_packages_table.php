@@ -20,6 +20,7 @@ class CreatePackagesTable extends Migration
             $table->string('features')->nullable();
             $table->string('renown')->nullable();
             $table->boolean('status')->default(false);
+            $table->string('fecha');
             $table->foreignId('user_id')
                 ->nullable()
                 ->references('id')

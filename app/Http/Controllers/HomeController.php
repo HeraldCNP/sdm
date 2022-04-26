@@ -32,33 +32,24 @@ class HomeController extends Controller
     }
 
     public function createPdf($key){
-        // dd($id);
-        // Gate::authorize('haveAccess', 'package.show');
-        // $package = Package::findorfail($key);
         $packa = Package::where('key', '=', $key)->get();
         $package = $packa[0];
 
-        // $certificate = 'file://'.base_path().'/public/labo.crt';
-        $certificate = 'file://'.base_path().'/cert.crt';
-
-        $primaryKey =  'file://'.base_path().'/key.pem';
 
         $info = array(
-            'Name' => 'Laboratorio Quimico Instrumental San Martin',
+            'Name' => 'Laboratorio Quimico SDM',
             'Location' => 'Potosí - Bolivia',
             'Reason' => 'Certificado Digital de Analisis Quimico de Minerales',
-            'ContactInfo' => 'https://www.labsanmartin.com.bo',
+            'ContactInfo' => 'http://www.labsdm.net',
         );
-        $view = \Illuminate\Support\Facades\View::make('admin.packages.pdf2', compact('package'));
+        $view = \Illuminate\Support\Facades\View::make('admin.packages.pdf', compact('package'));
 
         $html = $view->render();
 
-        // PDF::setSignature($certificate, $primaryKey, 'tcpdfdemo', '', 2, $info);
-        PDF::setSignature($certificate, $primaryKey, 'micelU76252989', '', 2, $info);
         PDF::SetMargins(5, 5, 5);
         PDF::SetAutoPageBreak(TRUE, 2);
-        PDF::SetTitle('Certificado de Analisis');
-        PDF::AddPage('L', 'A5');
+        PDF::SetTitle('Certificado');
+        PDF::AddPage('P', 'A5');
         $style = array(
             'border' => 0,
             'vpadding' => 'auto',
@@ -68,9 +59,15 @@ class HomeController extends Controller
             'module_width' => 1, // width of a single module in points
             'module_height' => 1 // height of a single module in points
         );
-        PDF::write2DBarcode(url('paquete/pdf/'.$package->key), 'QRCODE,H', 161, 55, 40, 40, $style, 'L');
+        PDF::write2DBarcode(url('paquete/pdf/'.$package->key), 'QRCODE,H', 110, 115, 30, 30, $style, 'Q');
         PDF::writeHTML($html, true, false, true, false, '');
         // PDF::Text(80, 205, 'QRCODE H - COLORED');
         PDF::Output('paquete-'.$package->code.'.pdf');
+    }
+
+    public function showCert($key){
+        $packa = Package::where('key', '=', $key)->get();
+        $package = $packa[0];
+        return view('packages.cert', compact('package'));
     }
 }

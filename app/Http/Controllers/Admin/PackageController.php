@@ -57,6 +57,7 @@ class PackageController extends Controller
         if($request->renown){
             $package->renown = strtoupper($request->renown);
         }
+        $package->fecha = Carbon::now()->isoFormat('LL');
         $package->user_id = $request->user_id;
         $package->company_id = $request->company_id;
         $package->save();
@@ -109,10 +110,13 @@ class PackageController extends Controller
         }
         $package->company_id = $request->company_id;
         $package->status = true;
+        $package->fecha = Carbon::create($request->fecha)->isoFormat('LL');
         $package->save();
         for ($i = 0; $i < count($request->elements); $i++) {
             $package->elements()->updateExistingPivot($request->elements[$i], ['value' => $request->values[$i]]);
         }
+        
+        
         // return redirect()->route('admin.packages.index')->with('info', 'El Paquete se actualizó con exito');
         return redirect()->route('admin.packages.show', $package)->with('info', 'El paquete se editó con exito');
     }
@@ -144,7 +148,7 @@ class PackageController extends Controller
         PDF::SetMargins(6, 7, 6, 1);
         // PDF::SetAutoPageBreak(TRUE, 2);
         PDF::SetTitle('Certificado de Analisis');
-        PDF::AddPage('L', 'A5');
+        PDF::AddPage('P', 'A5');
 
         $style = array(
             'border' => 0,
@@ -155,7 +159,7 @@ class PackageController extends Controller
             'module_width' => 1, // width of a single module in points
             'module_height' => 1 // height of a single module in points
         );
-        PDF::write2DBarcode(url('paquete/pdf/'.$package->key), 'QRCODE,H', 161, 55, 40, 40, $style, 'L');
+        PDF::write2DBarcode(url('paquete/show/'.$package->key), 'QRCODE,H', 110, 115, 30, 30, $style, 'Q');
         PDF::writeHTML($html, true, false, true, false, '');
         // PDF::Text(80, 205, 'QRCODE H - COLORED');
         PDF::Output('paquete-'.$package->key.'.pdf', 'I');
