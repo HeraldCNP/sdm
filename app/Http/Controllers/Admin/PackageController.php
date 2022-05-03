@@ -110,7 +110,10 @@ class PackageController extends Controller
         }
         $package->company_id = $request->company_id;
         $package->status = true;
-        $package->fecha = Carbon::create($request->fecha)->isoFormat('LL');
+        
+        if(preg_match('/^[0-1][0-9][\/][0-3][0-9][\/][0-9]{4}$/', $request->fecha)){
+            $package->fecha = Carbon::create($request->fecha)->isoFormat('LL');
+        }
         $package->save();
         for ($i = 0; $i < count($request->elements); $i++) {
             $package->elements()->updateExistingPivot($request->elements[$i], ['value' => $request->values[$i]]);
@@ -129,7 +132,8 @@ class PackageController extends Controller
      */
     public function destroy(Package $package)
     {
-        //
+        $package->delete();
+        return redirect()->route('admin.packages.index')->with('info', 'El Paquete fue eliminado con exito');
     }
 
 

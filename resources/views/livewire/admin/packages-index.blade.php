@@ -70,7 +70,7 @@
                                     <form action="{{ route('admin.packages.destroy', $package) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" class="btn btn-danger btn-xs"><i class="far fa-trash-alt"></i></button>
+                                        <button type="submit" onclick="javascript:return asegurar();" data-toggle="tooltip" data-placement="top" title="Eliminar" class="btn btn-danger btn-xs"><i class="far fa-trash-alt"></i></button>
                                     </form>
                                 @endcan
                             </td>

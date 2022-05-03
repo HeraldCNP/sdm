@@ -28,4 +28,11 @@
                 $('[data-toggle="tooltip"]').tooltip()
             })
         </script>
+    <script>
+        function asegurar ()
+          {
+              rc = confirm("¿Seguro que desea Eliminar?");
+              return rc;
+          }
+        </script>
 @stop

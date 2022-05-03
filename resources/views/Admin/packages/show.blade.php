@@ -69,10 +69,8 @@
             @endforeach
             <tr><td colspan="4" height="50px"></td></tr>
             <tr>
-                <td style="text-align: right;" width="70x">{{ $package->created_at->isoFormat('D') }}</td>
-                <td style="text-align: center;" width="120">{{ $package->created_at->isoFormat('MMMM') }}</td>
-                <td style="text-align: right;" width="90px">{{ $package->created_at->isoFormat('YY') }}</td>
-                <td></td>
+                
+                <td colspan="4">{{ $package->fecha }}</td>
             </tr>
         </table>
     </div>
