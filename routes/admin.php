@@ -29,6 +29,7 @@ Route::get('paquetes/pdfcert/{paquete}', [PackageController::class, 'certPdf'])-
 Route::get('paquetes/ayer', [PackageController::class, 'yesterdayReport'])->name('admin.packages.ayer');
 Route::get('paquetes/ticket/{paquete}', [PackageController::class, 'ticket'])->name('admin.packages.ticket');
 Route::get('paquetes/cliente', [PackageController::class, 'packagesCompany'])->name('admin.packages.company');
+Route::get('paquetes/user', [PackageController::class, 'packagesUser'])->name('admin.packages.user');
 Route::get('report/date', [ReportController::class, 'searchPackageDate'])->name('admin.reports.date');
 Route::get('report/user', [ReportController::class, 'searchPackageUser'])->name('admin.reports.user');
 Route::get('report/day', [ReportController::class, 'searchReportDay'])->name('admin.reports.day');

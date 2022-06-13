@@ -428,6 +428,13 @@ return [
             // 'active' => ['admin/tags*'],
             'can'       =>  'admin.packages.company'
         ],
+        [
+            'text' => 'Mis Paquetes',
+            'route'  => 'admin.packages.user',
+            'icon' => 'far fa-fw fa-user',
+            // 'active' => ['admin/tags*'],
+            'can'       =>  'admin.packages.user'
+        ],
     ],
 
     /*
