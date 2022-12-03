@@ -20,9 +20,6 @@
                 <input type="hidden" id="phone" value="{{ $package->user->people->phone }}">
                 <input type="hidden" id="key" value="{{ url('/paquete/pdf/'.$package->key) }}">
                 <a href="{{ route('admin.packages.index') }}" data-toggle="tooltip" title="Lista de Paquetes" class="btn btn-lg btn-info">Lista de Paquetes</a>
-                {{-- <button class="btn btn-lg btn-success" id="btnWhatsapp" type="submit" data-toggle="tooltip" title="Notificar por Whatsapp">
-                    <i class="fab fa-whatsapp"> Notificar</i>
-                </button> --}}
                 <a href="{{ route('admin.package.pdf', $package) }}" data-toggle="tooltip" title="Generar PDF" class="btn btn-lg btn-warning" target="_blank"><i class="far fa-file-pdf"> Generar PDF </i></a>
             </form>
         </div>
@@ -90,12 +87,5 @@
 @stop
 
 @section('js')
-    {{-- <script>
-    document.querySelector('#btnWhatsapp').addEventListener('click', function() {
-        let phone = document.querySelector('#phone').value;
-        let key = document.querySelector('#key').value;
-        let url = "https://api.whatsapp.com/send?phone=591" + phone +"&text=*Laboratorio Quimico Instrumental San Martin* informa que el resultado de su analisis ya se encuentra disponible, puede descargar su certificado digital aqui:%0A %0A" + key + "%0A %0A No olvide agregar este número como *LaboratorioSanMartin* para poder descargar su certificado";
-        window.open(url);
-    });
-    </script> --}}
+
 @stop

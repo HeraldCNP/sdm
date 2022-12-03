@@ -46,6 +46,12 @@
         left: 150px; 
         width: 100%;
       }
+      .qr{
+        position: absolute; 
+        top: 500px; 
+        left: 230px; 
+        width: 100%;
+      }
     </style>
   </head>
   <body>

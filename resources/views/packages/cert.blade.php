@@ -20,6 +20,10 @@
                 <b>{{ $element->name . ': ' }}  {{ $element->pivot->value }}  {{ $element->symbol }}</b><br>
             @endforeach
           </span>
+
+          <div class="qr">
+            {!! QrCode::size(100)->generate(Request::url()); !!}
+        </div>
       </div>
       <div class="row">
           <div class="col mt-5">
