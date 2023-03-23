@@ -12,13 +12,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        SEOTools::setTitle('Laboratorio Químico Instrumental San Martin');
-        SEOTools::setDescription('Laboratorio Químico Instrumental San Martin de la ciudad de Potosí Bolivia realizamos análisis de minerales confiables, rápidos y precisos');
-        SEOTools::opengraph()->setUrl('http://labsanmartin.com.bo');
-        SEOTools::setCanonical('http://labsanmartin.com.bo');
-        SEOTools::opengraph()->addProperty('type', 'website');
-        SEOTools::twitter()->setSite('@labsanmartin');
-        SEOTools::jsonLd()->addImage('http://labsanmartin.com.bo/img/logo/logo.png');
+        
 
 
         $posts = Post::latest()

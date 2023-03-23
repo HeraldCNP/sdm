@@ -373,12 +373,6 @@ return [
                     // 'can'       =>  'admin.reports.user'
                 ],
                 [
-                    'text' => 'Varios',
-                    'route'         => 'admin.reports.some',
-                    'icon'        => 'far fa-list-alt',
-                    // 'can'       =>  'admin.reports.some'
-                ],
-                [
                     'text' => 'Diario',
                     'route'         => 'admin.reports.day',
                     'icon'        => 'far fa-calendar-alt',

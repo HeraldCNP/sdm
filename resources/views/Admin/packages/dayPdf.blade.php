@@ -67,10 +67,7 @@
             <td style="text-align: center; font-size: 0.6em;">{{ $package->updated_at->isoFormat('L') }}</td>
         </tr>
         @endforeach
-        <tr>
-            <td colspan="5" style="text-align: center; font-size:0.5em; border-style: none;">Este certificado se encuentra firmado digitalmente por el <a href="www.labsanmartin.com.bo" target="_blank">Laboratorio Quimico Instrumental San Martin</a> y puede ser verificado en la página <a href="https://validar.firmadigital.bo/" target="_blank">https://validar.firmadigital.bo/</a><br>Recuerda que la Firma Digital es legalmente válida según la Ley 164 de 2011 y el Decreto Supremo 3525 de 2018 </td>
-            <td style="border-style: none;"><a style="text-align: center;" href="www.firmadigital.bo" target="_blank"><img height="25px" alt="" src="{{ asset('images/pdf/logoFirmaDigital.jpg') }}" /></a>  </td>
-        </tr>
+        
        </table>
 </body>
 </html>
